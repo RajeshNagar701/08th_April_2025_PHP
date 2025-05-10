@@ -1,29 +1,28 @@
 <?php
 /*
 
-
 $a=10; 
-
-
 PHP Data Types
 
 String   "nagar"
 Integer  10
-Float (floating point numbers - also called double)  10.50
-Boolean  yes/No
+Float 10.50 (floating point numbers - also called double)  
 Array    $arr=array["a","b","c"]
+
+Boolean  yes/No
 Object   $obj = new classname
 NULL    
 Resource
 
-php is loosely type laung due to not define any data type $a="rajesh";
+php is loosely type laung due to not 
+define any data type $a=10.5;
 
 
 
 PHP has three different variable scopes:
 
-local  : in function that not user out of function
-global : out of function we can use any where
+local  : in function that not user out of function { $a=10 }
+global : out of function we can use any where 
 static : static keywords  
 
 
@@ -31,10 +30,10 @@ Php naming rules
 
 1) starts with latter or _
 
-$_abc=10;  true
-$abc123=10; true
-$123abc=10; false
-$abc a123=10 false // no space
+$_abc=10;  			true
+$abc123=10; 		true
+$123abc=10; 		false
+$abc a123=10 false  // no space
  
 
 
