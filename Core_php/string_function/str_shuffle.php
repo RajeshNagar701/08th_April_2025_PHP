@@ -1,3 +1,5 @@
 <?php
-echo str_shuffle("Pratik");  // randemely shuffle all character in astring
+
+echo str_shuffle("abcd1234");  // randemely shuffle all character in astring
+
 ?>
