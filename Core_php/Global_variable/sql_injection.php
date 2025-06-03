@@ -7,22 +7,27 @@
 <!--
 
 SQL Injection
-SQL injection is a code injection technique that might destroy your database.
+SQL injection is a code injection technique that might destroy your 
+database.
 
 SQL injection is one of the most common web hacking techniques.
 
-SQL injection is the placement of malicious code in SQL statements, via web page input.
+SQL injection is the placement of malicious code in SQL statements, 
+via web page input.
 
 
 SQL in Web Pages
-SQL injection usually occurs when you ask a user for input, like their username/userid, and 
-instead of a name/id, the user gives you an SQL statement that you will unknowingly run on your database.
+SQL injection usually occurs when you ask a user for input, 
+like their username/userid, and instead of a name/id, 
+the user gives you an SQL statement that you will 
+unknowingly run on your database.
 
 
 Many web applications are connected to a database. 
 The database holds all the information the web application 
 wish to store and use.
-SQL Injection is a technique which allows attackers to manipulate the SQL 
+SQL Injection is a technique which allows attackers to 
+manipulate the SQL 
 ("Structured Query Language") 
 
 the developer of the web application is using.
@@ -43,15 +48,18 @@ This both function convert query into string than we avoid sql injection
 </form>
 <?php
 
-$mysqli = new mysqli('localhost','root','','test');
+	/// database connectivity
+
+					// hostname ,username, pass ,db name 
+$connect = new mysqli('localhost','root','','test');
 
 
 if(isset($_POST['submit']))
 {
-	echo $firstname = $mysqli->real_escape_string($_POST['name']);
+	echo $firstname = $connect->real_escape_string($_POST['name']);
 
 	// Escape special characters, if any
-	echo $age = mysqli_real_escape_string($mysqli, $_POST['age']);
+	echo $age = mysqli_real_escape_string($connect, $_POST['age']);
 }
 
 ?>
