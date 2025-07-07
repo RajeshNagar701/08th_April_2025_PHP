@@ -24,6 +24,9 @@ if elseif else
 nested if
 switch	
 
+
+
+
 */
 
 
@@ -39,7 +42,7 @@ if($a>=$b)
 
 /*
 $a=50;
-$b=40;
+$b=60;
 if($a>$b)
 {
 	echo "a is greater than b";
@@ -71,27 +74,23 @@ else
 {
 	echo "a is less than b & c";
 }
-
 */
 
 /*
-$a=60;
+
+$a=40;
 switch($a)
 {
 	case '10':
 	echo "Ans is 10";
 	break;
 	
+	case '20':
+	echo "Ans is 20";
+	break;
+	
 	case '30':
 	echo "Ans is 30";
-	break;
-	
-	case '50':
-	echo "Ans is 50";
-	break;
-	
-	case '60':
-	echo "Ans is 60";
 	break;
 	
 	default:
@@ -99,8 +98,6 @@ switch($a)
 	break;
 }
 */
-
-
 
 
 $a=20;
@@ -120,27 +117,6 @@ else
 {
 	echo "all cond false";
 }
-
-
-
-/*
-$a=40;
-$b=20;
-$sum=$a+$b;
-
-echo $sum;
-
-if($sum>40)
-{
-	echo "You are pass";
-}
-else
-{
-	echo "You are fail";
-}
-
-
-*/
 
 ?>
 

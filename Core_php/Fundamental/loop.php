@@ -34,10 +34,11 @@ foreach()
 
 // While()
 
-/*	
-$i=50;
+/*
+$i=1;
+
 while($i<=100){
-	echo "<p>".$i."</p>";
+	echo $i . " : Rajesh <br>";
 	$i++;
 }
 */
@@ -52,30 +53,32 @@ for($i=50;$i<=100;$i++)
 
 
 //do while
-
+/*
 $i=1;
-do
-{
-	echo $i . "<br>";
+do{
+	echo $i . " : Rajesh <br>";
 	$i++;
-}while($i>=10);
+}while($i>=100);
+*/
 
 
 
-
-
-
-
+// conrol loop by break/continue
 
 // break
+
+/*
 for($a=1;$a<=100;$a++)
 {
 	if($a==51)
 	{
 		break;
-	}
+	}	
     echo $a."<br>";		
 }
+*/
+
+
 // continue
 for($a=1;$a<=10;$a++)
 {
@@ -85,6 +88,7 @@ for($a=1;$a<=10;$a++)
 	}
     echo $a."<br>";		
 }
+
 
 ?>
 

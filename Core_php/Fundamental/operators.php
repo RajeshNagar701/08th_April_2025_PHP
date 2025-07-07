@@ -8,9 +8,12 @@ Assignment operators    =     += -= *= /=  %= $a=10; $b=10 $a+=$b $a=$a+$b  $a-=
 
 Comparison operators    == === > < >= <= !=
 
-Increment/Decrement operators    ++    --  a=10 a++ echo 
-Logical operators   &&     ||     !
+Increment/Decrement operators    a++    --  a=10 a++ echo 
+
+Logical operators   &&     ||     !   if(a>b && a>c) if(a>b || a>c) if(!(a>b))
+
 String operators    .    .=
+
 Conditional assignment operators   (cond)?'if':'else';
 Array operators 
 
@@ -21,7 +24,7 @@ Array operators
 /*
 $a=11;
 $b=20;
-$sum=$b+$a;
+$sum=$b%$a;   20%11 = 9
 echo $sum;
 */
 
@@ -110,7 +113,7 @@ else
 
 //String Operators   .   .=
 
-
+/*
 $a="Raj";
 echo "Hello" . $a . "<br>";
 
@@ -118,7 +121,7 @@ $name="Rajesh";
 $name.=" Nagar";
 $name.=" .N";
 echo $name;
-
+*/
 
 // conditional operators / turnory 
 
@@ -135,7 +138,8 @@ else
 */
 
 // turnory operator conditional( ? : )   (cond)? yes : No
-$age=18;
+
+$age=17;
 echo $ans=($age>=18)? "Man" : "Child";  // codition ? "yes":"no";   ?:
 
 

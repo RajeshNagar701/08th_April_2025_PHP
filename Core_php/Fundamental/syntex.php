@@ -12,26 +12,41 @@ PHP is free to download and use
 PHP files can contain text, HTML, CSS, JavaScript, and PHP code
 PHP files have extension ".php"
 
+PHP requirement
+
+PHP
+mysql
+server
+
+==============> xampp install
+
+store file : xampp/htdocs/raj/demo.PHP
+
+run on chrome : localhost/raj/demo.PHP
+
+
+
+
 -->
 <h1>Hi i am html</h1>
 <h1> 5 + 5</h1>
 
 <?php
-echo "Hi i am php";
 
 echo 5+5;
 
-echo "<h1>Raj Nagar</h1>";
+echo "<h1>Hi hello</h1>";
 
-echo "Hello" . "How are you !";
+// concate operator for join 2 string
+echo "<h1>Hello " . "how are you ?";
 
-// comment in single line
+
+// single line comment
+
 /*
- hi
- this 
- is
- multiline comment
+multi
+line
+comment
 */
 ?>
-
 
