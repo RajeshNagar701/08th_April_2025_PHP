@@ -34,6 +34,7 @@ if(isset($_REQUEST['submit']))
 	
 	$per=($total*100)/300;
     echo "<h1> Total percantages : ".$per."%</h1>";
+	
 	if($per>90)
 	{
 		echo $grade="<h1 style='color:green'> A+ Garde </h1>";

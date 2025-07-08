@@ -19,17 +19,12 @@ Method  get => $_GET['']
 
 <?php
 
-session_start();
-echo $_SESSION['user'];
+if(isset($_GET['save']))
+{
+	echo $name=$_GET['name'];
+	echo $age=$_REQUEST['age'];
+}
 
-echo $_COOKIE['user'];
-
-
-	if(isset($_GET['save']))
-	{
-		echo $_GET['name'];
-		echo $_REQUEST['age'];
-	}
 ?>
 
 

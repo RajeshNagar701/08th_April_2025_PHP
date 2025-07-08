@@ -27,11 +27,11 @@ function demo()    // define variable as super global use any were in program;
 {
 	$x=10; // local
 	$y=45;		
-	echo $demo['z']=$x+$y . "<br>";  // CONVERT LOCAL TO GLOBAL
+	echo $GLOBALS['z']=$x+$y . "<br>";  // CONVERT LOCAL TO GLOBAL
 }
 demo();
-
 echo $z;
+
 
 
 
