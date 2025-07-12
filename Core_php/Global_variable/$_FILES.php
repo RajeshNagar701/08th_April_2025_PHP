@@ -22,8 +22,9 @@ if(isset($_POST['submit']))
 	{
 		echo $img=$_FILES['file1']['name'];
 			 
-			 $path='img/upload/'.$img; 	
-			 $dup_img=$_FILES['file1']['tmp_name'];
+			 $path='img/upload/'.$img; 	// path set
+			 $dup_img=$_FILES['file1']['tmp_name']; // duplicate file
+			 
 			 move_uploaded_file($dup_img,$path);
 	}
 	

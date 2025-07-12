@@ -11,7 +11,7 @@ decreasing the latency to open the page
 
 
 		// name    value        time for val
-setcookie('user',"My cookie",time()+15);   // CREATE  365*24*60*60
+setcookie('user',"My cookie",time()+20);   // CREATE  365*24*60*60
 
 //echo $_COOKIE['user'];    // USE/PRINT 
 
