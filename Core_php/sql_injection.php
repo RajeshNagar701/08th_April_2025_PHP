@@ -32,11 +32,9 @@ manipulate the SQL
 
 the developer of the web application is using.
  This typically happens because of lack of data sanitization.
- 
 SQL is used regularly by developers to access database resources. 
 
 $first_name=real_escape_string($_REQUEST['firstname']);
-
 This both function convert query into string than we avoid sql injection
 -->
 
@@ -47,13 +45,10 @@ This both function convert query into string than we avoid sql injection
 <p><input type="submit" name="submit" value="Click"/></p>
 </form>
 <?php
-
 	/// database connectivity
 
 					// hostname ,username, pass ,db name 
 $connect = new mysqli('localhost','root','','test');
-
-
 if(isset($_POST['submit']))
 {
 	echo $firstname = $connect->real_escape_string($_POST['name']);
