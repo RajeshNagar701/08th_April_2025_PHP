@@ -1,8 +1,6 @@
 <?php
 
 // useful in reduce reusable code and remove inheritance multiple
-
-
 trait abc
 {
 	public function test()
@@ -21,7 +19,6 @@ class pqr
 {
 	use abc,xyz;  // multiple inherit 
 }
-
 $obj=new pqr();
 $obj->test();
 $obj->sample();

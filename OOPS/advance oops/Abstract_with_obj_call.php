@@ -3,6 +3,7 @@
 /*
 An abstract class or method is defined with the abstract keyword:
 An object of an abstract class can't be made.
+
 An abstract class is a class that contains at least one 
 abstract method. 
 
@@ -32,7 +33,6 @@ class B extends A
 	{
 		echo "This is B class foo method";
 	}
-	
 }
 class C extends A
 {

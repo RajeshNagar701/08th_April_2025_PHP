@@ -5,10 +5,7 @@
 overriding a method by prefixing the definition with final. 
 If the class itself is
 being defined final then it cannot be extended.
-
-
 */
-
 final class a
 {
 	 function test()

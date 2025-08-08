@@ -1,11 +1,7 @@
 <?php
-
 /*
-
- Advance Function 
- 
+Advance Function  
 	Magic Methods / Build in Function/predefined 
-
 Magic methods are special methods which override PHP's default's 
 action when certain actions are performed on an object.
 
@@ -24,7 +20,7 @@ __unserialize(),
 __toString(), 
 __invoke(), 
 __set_state(), 
-__clone(), and __debugInfo().
+__clone(), and __debugInfo(). 
 
 
 =================================================================
