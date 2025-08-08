@@ -35,7 +35,7 @@
       <!-- Sidebar scroll-->
       <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
-          <a href="./index.html" class="text-nowrap logo-img">
+          <a href="dashboard" class="text-nowrap logo-img">
             <img src="assets/images/logos/logo.svg" alt="" />
           </a>
           <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
@@ -50,7 +50,7 @@
               <span class="hide-menu">Home</span>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="./dashboard.php" aria-expanded="false">
+              <a class="sidebar-link" href="dashboard" aria-expanded="false">
                 <i class="ti ti-atom"></i>
                 <span class="hide-menu">Dashboard</span>
               </a>
@@ -69,7 +69,7 @@
               <ul aria-expanded="false" class="collapse first-level">
                 <li class="sidebar-item">
                   <a class="sidebar-link justify-content-between"  
-                    href="add_categories.php">
+                    href="add_categories">
                     <div class="d-flex align-items-center gap-3">
                       <div class="round-16 d-flex align-items-center justify-content-center">
                         <i class="ti ti-circle"></i>
@@ -81,7 +81,7 @@
                 </li>
                  <li class="sidebar-item">
                   <a class="sidebar-link justify-content-between"  
-                    href="manage_categories.php">
+                    href="manage_categories">
                     <div class="d-flex align-items-center gap-3">
                       <div class="round-16 d-flex align-items-center justify-content-center">
                         <i class="ti ti-circle"></i>
@@ -106,7 +106,7 @@
               <ul aria-expanded="false" class="collapse first-level">
                 <li class="sidebar-item">
                   <a class="sidebar-link justify-content-between"  
-                    href="add_product.php">
+                    href="add_product">
                     <div class="d-flex align-items-center gap-3">
                       <div class="round-16 d-flex align-items-center justify-content-center">
                         <i class="ti ti-circle"></i>
@@ -118,7 +118,7 @@
                 </li>
                  <li class="sidebar-item">
                   <a class="sidebar-link justify-content-between"  
-                    href="manage_product.php">
+                    href="manage_product">
                     <div class="d-flex align-items-center gap-3">
                       <div class="round-16 d-flex align-items-center justify-content-center">
                         <i class="ti ti-circle"></i>
@@ -131,25 +131,31 @@
               </ul>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="./manage_customer.php" aria-expanded="false">
+              <a class="sidebar-link" href="manage_customer" aria-expanded="false">
                 <i class="ti ti-atom"></i>
                 <span class="hide-menu">Customer</span>
               </a>
             </li>
 			<li class="sidebar-item">
-              <a class="sidebar-link" href="./manage_feedback.php" aria-expanded="false">
+              <a class="sidebar-link" href="manage_feedback" aria-expanded="false">
                 <i class="ti ti-atom"></i>
                 <span class="hide-menu">Feedback</span>
               </a>
             </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="manage_contact" aria-expanded="false">
+                <i class="ti ti-atom"></i>
+                <span class="hide-menu">Contact</span>
+              </a>
+            </li>
 			<li class="sidebar-item">
-              <a class="sidebar-link" href="./manage_cart.php" aria-expanded="false">
+              <a class="sidebar-link" href="manage_cart" aria-expanded="false">
                 <i class="ti ti-atom"></i>
                 <span class="hide-menu">Cart</span>
               </a>
             </li>
 			<li class="sidebar-item">
-              <a class="sidebar-link" href="./manage_order.php" aria-expanded="false">
+              <a class="sidebar-link" href="manage_order" aria-expanded="false">
                 <i class="ti ti-atom"></i>
                 <span class="hide-menu">Order</span>
               </a>

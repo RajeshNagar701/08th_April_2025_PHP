@@ -25,16 +25,24 @@
 				  </tr>
 				</thead>
 				<tbody>
+
+				<?php
+				foreach($cate_arr as $data)
+				{
+				?>
+
 				  <tr>
-					<td>1</td>
-					<td>Graphic</td>
-					<td>graphic.png</td>
+					<td><?php echo $data->id;?></td>
+					<td><?php echo $data->cate_name;?></td>
+					<td><?php echo $data->cate_image;?></td>
 					<td  class="text-center">
 						<a href="" class="btn btn-primary">Edit</a>
 						<a href="" class="btn btn-danger">Delete</a>
 					</td>
 				  </tr>
-				  
+				<?php
+				}
+				?>  
 				</tbody>
 			  </table>
             </div>

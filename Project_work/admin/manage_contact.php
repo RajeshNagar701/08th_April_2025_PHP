@@ -19,21 +19,31 @@
 				<thead>
 				  <tr>
 					<th>#ID</th>
-					<th>Categories Name</th>
-					<th>Image</th>
+					<th>Name</th>
+					<th>Email</th>
+					<th>comment</th>
 					<th class="text-center">Action</th>
 				  </tr>
 				</thead>
 				<tbody>
+				  <?php
+				foreach($cont_arr as $data)
+				{
+				?>
+
 				  <tr>
-					<td>1</td>
-					<td>Graphic</td>
-					<td>graphic.png</td>
+					<td><?php echo $data->id;?></td>
+					<td><?php echo $data->name;?></td>
+					<td><?php echo $data->email;?></td>
+					<td><?php echo $data->comment;?></td>
 					<td  class="text-center">
 						<a href="" class="btn btn-primary">Edit</a>
 						<a href="" class="btn btn-danger">Delete</a>
 					</td>
 				  </tr>
+				<?php
+				}
+				?>
 				  
 				</tbody>
 			  </table>

@@ -20,21 +20,34 @@
 				  <tr>
 					<th>#ID</th>
 					<th>Categories Name</th>
+					<th>Product Name</th>
+					<th>Price</th>
+					<th>Description</th>
 					<th>Image</th>
 					<th class="text-center">Action</th>
 				  </tr>
 				</thead>
 				<tbody>
+				 <?php
+				foreach($prod_arr as $data)
+				{
+				?>
+
 				  <tr>
-					<td>1</td>
-					<td>Graphic</td>
-					<td>graphic.png</td>
+					<td><?php echo $data->id;?></td>
+					<td><?php echo $data->cate_id;?></td>
+					<td><?php echo $data->pro_name;?></td>
+					<td><?php echo $data->price;?></td>
+					<td><?php echo $data->description;?></td>
+					<td><?php echo $data->image;?></td>
 					<td  class="text-center">
 						<a href="" class="btn btn-primary">Edit</a>
 						<a href="" class="btn btn-danger">Delete</a>
 					</td>
 				  </tr>
-				  
+				<?php
+				}
+				?>  
 				</tbody>
 			  </table>
             </div>

@@ -39,25 +39,25 @@ https://templatemo.com/tm-573-eduwell
               <div class="col-12">
                   <nav class="main-nav">
                       <!-- ***** Logo Start ***** -->
-                      <a href="index.php" class="logo">
+                      <a href="/index" class="logo">
                           <img src="assets/images/templatemo-eduwell.png" alt="EduWell Template">
                       </a>
                       <!-- ***** Logo End ***** -->
                       <!-- ***** Menu Start ***** -->
                       <ul class="nav">
-                          <li><a href="index.php" class="active">Home</a></li>
-						  <li ><a href="about-us.php">About Us</a></li>
-                          <li ><a href="our-services.php">Services</a></li>
-                          <li><a href="course.php">Courses</a></li>
+                          <li><a href="index" class="active">Home</a></li>
+						  <li ><a href="about-us">About Us</a></li>
+                          <li ><a href="our-services">Services</a></li>
+                          <li><a href="course">Courses</a></li>
                           <li class="has-sub">
                               <a href="javascript:void(0)">Pages</a>
                               <ul class="sub-menu">
-                                  <li><a href="our-services.php">Our Services</a></li>
-                                  <li><a href="contact-us.php">Contact Us</a></li>
+                                  <li><a href="our-services">Our Services</a></li>
+                                  <li><a href="contact-us">Contact Us</a></li>
                               </ul>
                           </li>
-                          <li><a href="contact-us.php">Contact Us</a></li> 
-						  <li><a href="signup.php">Signup</a></li> 
+                          <li><a href="contact-us">Contact Us</a></li> 
+						  <li><a href="signup">Signup</a></li> 
                       </ul>        
                       <a class='menu-trigger'>
                           <span>Menu</span>
