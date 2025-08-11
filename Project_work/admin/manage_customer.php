@@ -21,9 +21,8 @@
 					<th>#ID</th>
 					<th>Name</th>
 					<th>Email</th>
-					<th>Password</th>
 					<th>Mobile</th>
-					<th>Hobby</th>
+					<th>Lagnguages</th>
 					<th>Gender</th>
 					<th>Image</th>
 					<th class="text-center">Action</th>
@@ -39,11 +38,10 @@
 					<td><?php echo $data->id;?></td>
 					<td><?php echo $data->name;?></td>
 					<td><?php echo $data->email;?></td>
-					<td><?php echo $data->password;?></td>
 					<td><?php echo $data->mobile;?></td>
-					<td><?php echo $data->hobby;?></td>
+					<td><?php echo $data->lag;?></td>
 					<td><?php echo $data->gender;?></td>
-					<td><?php echo $data->image;?></td>
+					<td><img src="../website/assets/images/customers/<?php echo $data->image;?>" width="50px" alt=""></td>
 					<td  class="text-center">
 						<a href="" class="btn btn-primary">Edit</a>
 						<a href="" class="btn btn-danger">Delete</a>

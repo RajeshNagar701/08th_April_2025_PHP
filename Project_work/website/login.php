@@ -43,7 +43,7 @@
               </div>
          
 			  <div class="col-lg-6">
-				<a href="signup.php">If you already Not registered then Signup Here</a>
+				<a href="signup">If you already Not registered then Signup Here</a>
               </div>
               <div class="col-lg-6">
                 <fieldset>
