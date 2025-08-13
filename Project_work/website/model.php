@@ -9,9 +9,8 @@ class model{
        $this->conn=new mysqli('localhost','root','','topstech');
     }
 
-    // Select Function
+    //single table Select Function
     function select($tbl){
-        
     echo $sel="select * from $tbl";   // query
         $run=$this->conn->query($sel);   // query run
         while($fetch=$run->fetch_object())
@@ -21,6 +20,37 @@ class model{
         return $arr;
     }
 
+     function select_orderby($tbl,$col){
+    echo $sel="select * from $tbl ORDER BY $col";   // query
+        $run=$this->conn->query($sel);   // query run
+        while($fetch=$run->fetch_object())
+        {
+            $arr[]=$fetch;
+        }
+        return $arr;
+    }
+
+    function select_decending($tbl,$col){
+    echo $sel="select * from $tbl ORDER By $col desc";   // query
+        $run=$this->conn->query($sel);   // query run
+        while($fetch=$run->fetch_object())
+        {
+            $arr[]=$fetch;
+        }
+        return $arr;
+    }
+
+     //double table Select Function
+    function double_select($tbl1,$tbl2,$col,$on){
+        // select * from categories join products on categories.id=product.cate_id
+    echo $sel="select $tbl1.*,$tbl2.$col from $tbl1 join $tbl2 on $on";   // query
+        $run=$this->conn->query($sel);   // query run
+        while($fetch=$run->fetch_object())
+        {
+            $arr[]=$fetch;
+        }
+        return $arr;
+    }
 
      // insert Function
     function insert($tbl,$arr){

@@ -35,11 +35,11 @@
 
 				  <tr>
 					<td><?php echo $data->id;?></td>
-					<td><?php echo $data->cate_id;?></td>
+					<td><?php echo $data->cate_name;?></td>
 					<td><?php echo $data->pro_name;?></td>
 					<td><?php echo $data->price;?></td>
 					<td><?php echo $data->description;?></td>
-					<td><?php echo $data->image;?></td>
+					<td><img src="assets/images/products/<?php echo $data->image;?>" width="100px" alt=""></td>
 					<td  class="text-center">
 						<a href="" class="btn btn-primary">Edit</a>
 						<a href="" class="btn btn-danger">Delete</a>

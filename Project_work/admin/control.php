@@ -25,22 +25,21 @@ class control extends model
             case '/add_categories':
                 if (isset($_REQUEST['submit'])) {
 
-                   $cate_name=$_REQUEST['cate_name'];
-                   $cate_image=$_FILES['cate_image']['name'];
+                    $cate_name = $_REQUEST['cate_name'];
+                    $cate_image = $_FILES['cate_image']['name'];
 
-                   $path='assets/images/categories/'.$cate_image;
-                   $dup_img=$_FILES['cate_image']['tmp_name']; 
-                   move_uploaded_file($dup_img,$path);
+                    $path = 'assets/images/categories/' . $cate_image;
+                    $dup_img = $_FILES['cate_image']['tmp_name'];
+                    move_uploaded_file($dup_img, $path);
 
-                   $data=array("cate_name"=>$cate_name,"cate_image"=>$cate_image);
+                    $data = array("cate_name" => $cate_name, "cate_image" => $cate_image);
 
-                   $res=$this->insert('categories',$data);
-                   if($res)
-                   {
+                    $res = $this->insert('categories', $data);
+                    if ($res) {
                         echo "<script>
                             alert('Category Added Success!');
                         </script>";
-                   }
+                    }
                 }
                 include_once('add_categories.php');
                 break;
@@ -51,12 +50,41 @@ class control extends model
                 break;
 
             case '/add_product':
-                
+                $cate_arr = $this->select('categories');
+                if (isset($_REQUEST['submit'])) {
+
+                    $cate_id = $_REQUEST['cate_id'];
+                    $pro_name = $_REQUEST['pro_name'];
+                    $price = $_REQUEST['price'];
+                    $description = $_REQUEST['description'];
+
+
+                    $image = $_FILES['image']['name'];
+
+                    $path = 'assets/images/products/' . $image;
+                    $dup_img = $_FILES['image']['tmp_name'];
+                    move_uploaded_file($dup_img, $path);
+
+                    $data = array(
+                        "cate_id" => $cate_id,
+                        "pro_name" => $pro_name,
+                        "price" => $price,
+                        "description" => $description,
+                        "image" => $image
+                    );
+
+                    $res = $this->insert('products', $data);
+                    if ($res) {
+                        echo "<script>
+                            alert('Products Added Success!');
+                        </script>";
+                    }
+                }
                 include_once('add_product.php');
                 break;
 
             case '/manage_product':
-                $prod_arr = $this->select('products');
+                $prod_arr =$this->double_select('products','categories','cate_name','categories.id=products.cate_id');
                 include_once('manage_product.php');
                 break;
 
@@ -65,7 +93,7 @@ class control extends model
                 break;
 
             case '/manage_contact':
-                $cont_arr = $this->select('contact');
+                $cont_arr = $this->select_orderby('contact','name');
                 include_once('manage_contact.php');
                 break;
 
