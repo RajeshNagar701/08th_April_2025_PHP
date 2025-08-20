@@ -49,8 +49,15 @@ class control extends model
                     $dup_img = $_FILES['image']['tmp_name'];
                     move_uploaded_file($dup_img, $path);
 
-                    $data = array("name" => $name, "email" => $email,"password" => $password,"mobile" => $mobile,"lag" => $lag,
-                "gender" => $gender,"image" => $image);
+                    $data = array(
+                        "name" => $name,
+                        "email" => $email,
+                        "password" => $password,
+                        "mobile" => $mobile,
+                        "lag" => $lag,
+                        "gender" => $gender,
+                        "image" => $image
+                    );
 
                     $res = $this->insert('customer', $data);
                     if ($res) {
@@ -58,9 +65,7 @@ class control extends model
                             alert('Signup Success!');
                             window.location='login';
                         </script>";
-                    }
-                    else
-                    {
+                    } else {
                         echo "Not succeess";
                     }
                 }
@@ -68,6 +73,31 @@ class control extends model
                 break;
 
             case '/login':
+                if (isset($_REQUEST['submit'])) {
+
+                    $email = $_REQUEST['email'];
+                    $password = md5($_REQUEST['password']);
+                    $data = array(
+                        "email" => $email,
+                        "password" => $password
+                    );
+                    $res=$this->select_where('customer',$data);
+                    $chk=$res->num_rows; 
+                    if($chk==1) // 1 means true & 0 false
+                    {
+                        echo "<script>
+                            alert('Login Success!');
+                            window.location='index';
+                        </script>";
+                    }
+                    else
+                    {
+                        echo "<script>
+                            alert('Login Failed!');
+                            window.location='login';
+                        </script>";
+                    }
+                }
                 include_once('login.php');
                 break;
         }

@@ -14,7 +14,32 @@ class control extends model
 
         switch ($path) {
 
-            case '/admin':
+            case '/admin-login':
+                 if (isset($_REQUEST['submit'])) {
+
+                    $email = $_REQUEST['email'];
+                    $password = md5($_REQUEST['password']);
+                    $data = array(
+                        "email" => $email,
+                        "password" => $password
+                    );
+                    $res=$this->select_where('admin',$data);
+                    $chk=$res->num_rows; 
+                    if($chk==1) // 1 means true & 0 false
+                    {
+                        echo "<script>
+                            alert('Login Success!');
+                            window.location='dashboard';
+                        </script>";
+                    }
+                    else
+                    {
+                        echo "<script>
+                            alert('Login Failed!');
+                            window.location='admin-login';
+                        </script>";
+                    }
+                }    
                 include_once('admin_login.php');
                 break;
 
@@ -57,7 +82,6 @@ class control extends model
                     $pro_name = $_REQUEST['pro_name'];
                     $price = $_REQUEST['price'];
                     $description = $_REQUEST['description'];
-
 
                     $image = $_FILES['image']['name'];
 
