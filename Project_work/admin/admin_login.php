@@ -1,3 +1,13 @@
+<?php
+if(isset($_SESSION['a_id']))
+{
+  echo "<script>
+      window.location='dashboard';
+  </script>";
+}
+
+
+?>
 <!doctype html>
 <html lang="en">
 

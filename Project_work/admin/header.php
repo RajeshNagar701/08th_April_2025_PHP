@@ -1,3 +1,19 @@
+<?php
+if(isset($_SESSION['a_id']))
+{
+  
+}
+else
+{
+  echo "<script>
+      window.location='admin-login';
+  </script>";
+}
+
+
+?>
+
+
 <!doctype html>
 <html lang="en">
 
@@ -25,8 +41,8 @@
       </div>
 
       <div class="d-lg-flex align-items-center gap-2">
-        <h3 class="text-white mb-2 mb-lg-0 fs-5 text-center">Admin Pannel</h3>
-       
+        <h3 class="text-white mb-2 mb-lg-0 fs-5 text-center">Hi .. <?php echo $_SESSION['a_name'];?></h3>
+        | <h3 class="text-white mb-2 mb-lg-0 fs-5 text-center">Admin Pannel</h3>       
       </div>
 
     </div>
@@ -48,6 +64,12 @@
             <li class="nav-small-cap">
               <iconify-icon icon="solar:menu-dots-linear" class="nav-small-cap-icon fs-4"></iconify-icon>
               <span class="hide-menu">Home</span>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="#" aria-expanded="false">
+                <i class="ti ti-atom"></i>
+                <span class="hide-menu">Hi .. <?php echo $_SESSION['a_name'];?></span>
+              </a>
             </li>
             <li class="sidebar-item">
               <a class="sidebar-link" href="dashboard" aria-expanded="false">

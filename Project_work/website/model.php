@@ -72,7 +72,10 @@ class model
         //$chk=$run->num_rows;  // login
 
         /*
-        while ($fetch = $run->fetch_object()) {   // data fetch
+
+        $fetch = $run->fetch_object() // if single data
+
+        while ($fetch = $run->fetch_object()) {   // multiple data fetch
             $arr[] = $fetch;
         }
         */ 

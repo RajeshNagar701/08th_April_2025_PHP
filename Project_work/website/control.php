@@ -7,6 +7,7 @@ class control extends model
 
     function __construct()
     {
+        session_start();
         model::__construct();  // 3 call model __construct
 
         $path = $_SERVER['PATH_INFO'];
@@ -85,6 +86,13 @@ class control extends model
                     $chk=$res->num_rows; 
                     if($chk==1) // 1 means true & 0 false
                     {
+                        $data=$res->fetch_object(); // data fetch single
+                        //CREATE SESSION
+                        $_SESSION['u_name']=$data->name;
+                        $_SESSION['u_email']=$data->email;
+                        $_SESSION['u_id']=$data->id;
+
+
                         echo "<script>
                             alert('Login Success!');
                             window.location='index';
@@ -100,6 +108,20 @@ class control extends model
                 }
                 include_once('login.php');
                 break;
+
+                case '/user_logout':
+                
+                    unset($_SESSION['u_id']);
+                    unset($_SESSION['u_name']);
+                    unset($_SESSION['u_email']);
+
+                    //session_destroy();
+                     echo "<script>
+                            alert('Logout Success!');
+                            window.location='index';
+                        </script>";
+                break;
+
         }
     }
 }

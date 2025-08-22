@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
+<head>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -20,53 +20,64 @@
     <link rel="stylesheet" href="assets/css/templatemo-eduwell-style.css">
     <link rel="stylesheet" href="assets/css/owl.css">
     <link rel="stylesheet" href="assets/css/lightbox.css">
-<!--
+    <!--
 
 TemplateMo 573 EduWell
 
 https://templatemo.com/tm-573-eduwell
 
 -->
-  </head>
+</head>
 
 <body>
 
 
-  <!-- ***** Header Area Start ***** -->
-  <header class="header-area header-sticky">
-      <div class="container">
-          <div class="row">
-              <div class="col-12">
-                  <nav class="main-nav">
-                      <!-- ***** Logo Start ***** -->
-                      <a href="/index" class="logo">
-                          <img src="assets/images/templatemo-eduwell.png" alt="EduWell Template">
-                      </a>
-                      <!-- ***** Logo End ***** -->
-                      <!-- ***** Menu Start ***** -->
-                      <ul class="nav">
-                          <li><a href="index" class="active">Home</a></li>
-						  <li ><a href="about-us">About Us</a></li>
-                          <li ><a href="our-services">Services</a></li>
-                          <li><a href="course">Courses</a></li>
-                          <li class="has-sub">
-                              <a href="javascript:void(0)">Pages</a>
-                              <ul class="sub-menu">
-                                  <li><a href="our-services">Our Services</a></li>
-                                  <li><a href="contact-us">Contact Us</a></li>
-                              </ul>
-                          </li>
-                          <li><a href="contact-us">Contact Us</a></li> 
-						  <li><a href="signup">Signup</a></li> 
-                      </ul>        
-                      <a class='menu-trigger'>
-                          <span>Menu</span>
-                      </a>
-                      <!-- ***** Menu End ***** -->
-                  </nav>
-              </div>
-          </div>
-      </div>
-  </header>
-  <!-- ***** Header Area End ***** -->
-  
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a href="/index" class="logo">
+                            <img src="assets/images/templatemo-eduwell.png" alt="EduWell Template">
+                        </a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li><a href="index" class="active">Home</a></li>
+                            <li><a href="about-us">About Us</a></li>
+                            <li><a href="our-services">Services</a></li>
+                            <li><a href="course">Courses</a></li>
+                            
+                            <li><a href="contact-us">Contact Us</a></li>
+
+                            <?php
+                            if (isset($_SESSION['u_id'])) {
+                            ?>
+                                <li class="has-sub">
+                                <a href="javascript:void(0)"><?php echo "Hi .." . $_SESSION['u_name']?></a>
+                                <ul class="sub-menu">
+                                    <li><a href="our-services">My Profile</a></li>
+                                    <li><a href="contact-us">My Order</a></li>
+                                </ul>
+                            </li>
+                                <li><a href="user_logout">Logout</a></li>
+                            <?php
+                            } else {
+                            ?>
+                                <li><a href="login">Login</a></li>
+                            <?php
+                            }
+                            ?>
+                        </ul>
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
