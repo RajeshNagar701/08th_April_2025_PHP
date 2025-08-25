@@ -17,7 +17,7 @@ class control extends model
         switch ($path) {
 
             case '/admin-login':
-                 if (isset($_REQUEST['submit'])) {
+                if (isset($_REQUEST['submit'])) {
 
                     $email = $_REQUEST['email'];
                     $password = md5($_REQUEST['password']);
@@ -25,45 +25,43 @@ class control extends model
                         "email" => $email,
                         "password" => $password
                     );
-                    $res=$this->select_where('admin',$data);
-                    
-                    $chk=$res->num_rows; // login checj row wise condition 
-                    if($chk==1) // 1 means true & 0 false
-                    {  
-                        $data=$res->fetch_object(); // data fetch single
+                    $res = $this->select_where('admin', $data);
+
+                    $chk = $res->num_rows; // login checj row wise condition 
+                    if ($chk == 1) // 1 means true & 0 false
+                    {
+                        $data = $res->fetch_object(); // data fetch single
                         //CREATE SESSION
-                        $_SESSION['a_name']=$data->name;
-                        $_SESSION['a_email']=$data->email;
-                        $_SESSION['a_id']=$data->id;
+                        $_SESSION['a_name'] = $data->name;
+                        $_SESSION['a_email'] = $data->email;
+                        $_SESSION['a_id'] = $data->id;
 
                         echo "<script>
                             alert('Login Success!');
                             window.location='dashboard';
                         </script>";
-                    }
-                    else
-                    {
+                    } else {
                         echo "<script>
                             alert('Login Failed!');
                             window.location='admin-login';
                         </script>";
                     }
-                }    
+                }
                 include_once('admin_login.php');
                 break;
 
-                case '/admin_logout':
-                    unset($_SESSION['a_id']);
-                    unset($_SESSION['a_name']);
-                    unset($_SESSION['a_email']);
+            case '/admin_logout':
+                unset($_SESSION['a_id']);
+                unset($_SESSION['a_name']);
+                unset($_SESSION['a_email']);
 
-                    //session_destroy();
-                     echo "<script>
+                //session_destroy();
+                echo "<script>
                             alert('Logout Success!');
                             window.location='admin-login';
                         </script>";
                 break;
-                
+
             case '/dashboard':
                 include_once('dashboard.php');
                 break;
@@ -129,7 +127,7 @@ class control extends model
                 break;
 
             case '/manage_product':
-                $prod_arr =$this->double_select('products','categories','cate_name','categories.id=products.cate_id');
+                $prod_arr = $this->double_select('products', 'categories', 'cate_name', 'categories.id=products.cate_id');
                 include_once('manage_product.php');
                 break;
 
@@ -138,7 +136,7 @@ class control extends model
                 break;
 
             case '/manage_contact':
-                $cont_arr = $this->select_orderby('contact','name');
+                $cont_arr = $this->select_orderby('contact', 'name');
                 include_once('manage_contact.php');
                 break;
 
@@ -157,6 +155,37 @@ class control extends model
 
             case '/admin_account':
                 include_once('admin_account.php');
+                break;
+
+
+            case '/delete':
+                if (isset($_REQUEST['del_contact'])) {
+                    $id=$_REQUEST['del_contact'];
+                    $where=array("id"=>$id);
+                    $res=$this->delete_where('contact',$where);
+                    if($res)
+                    {
+                         echo "<script>
+                            alert('Contact Deleted Success!');
+                        </script>";
+                    }
+                }
+                if (isset($_REQUEST['del_category'])) {
+                      $id=$_REQUEST['del_category'];
+                    $where=array("id"=>$id);
+                    $res=$this->delete_where('categor',$where);
+                    if($res)
+                    {
+                         echo "<script>
+                            alert('Contact Deleted Success!');
+                        </script>";
+                    }
+                }
+                if (isset($_REQUEST['del_customer'])) {
+                }
+                if (isset($_REQUEST['del_product'])) {
+                }
+
                 break;
         }
     }

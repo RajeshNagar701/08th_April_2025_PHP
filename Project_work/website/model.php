@@ -98,6 +98,25 @@ class model
         $run = $this->conn->query($ins);   // query run
         return $run;
     }
+
+
+
+    function delete_where($tbl,$arr)
+    {
+        $sel="delete from $tbl where 1=1";  // query continue
+        $col_arr = array_keys($arr); // array(0=>"email",1=>"password")
+        $value_arr = array_values($arr);
+        $i=0;
+        foreach($arr as $c)
+        {
+           $sel.=" and $col_arr[$i]='$value_arr[$i]'";
+           $i++;
+        }
+        $run = $this->conn->query($sel);   // query run
+        return $run;
+    }
+
+
 }
 
 $obj = new model;

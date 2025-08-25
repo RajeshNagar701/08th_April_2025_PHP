@@ -44,7 +44,7 @@
 					<td><img src="../website/assets/images/customers/<?php echo $data->image;?>" width="50px" alt=""></td>
 					<td  class="text-center">
 						<a href="" class="btn btn-primary">Edit</a>
-						<a href="" class="btn btn-danger">Delete</a>
+						<a href="delete?dlt_customer=<?php echo $data->id;?>" class="btn btn-danger">Delete</a>
 					</td>
 				  </tr>
 				<?php
