@@ -99,7 +99,7 @@ class model
         return $run;
     }
 
-
+	
 
     function delete_where($tbl,$arr)
     {
@@ -115,7 +115,44 @@ class model
         $run = $this->conn->query($sel);   // query run
         return $run;
     }
-
+	
+	
+	function update($tbl, $arr, $where)
+    {
+        $col_arr = array_keys($arr);  // array('0'=>"cate_name",'1'=>"cate_image");    
+        $value_arr = array_values($arr);  // array('0'=>"kids",'1'=>"kids.jpg");
+   
+        // update customer set name='',email='' where id=5
+		$upd = "update $tbl set";   // query
+		$j=0;
+		
+		$count=count($arr);
+		foreach($arr as $data)
+		{
+			if($count==$j+1)
+			{
+				$upd.=" $col_arr[$j]='$value_arr[$j]'";
+			}
+			else
+			{
+				$upd.=" $col_arr[$j]='$value_arr[$j]',";
+				$j++;
+			}	
+		}
+		
+		$upd.=" where 1=1";
+		
+		$wcol_arr = array_keys($where);
+        $wvalue_arr = array_values($where);
+        $i=0;
+        foreach($where as $c)
+        {
+           $upd.=" and $wcol_arr[$i]='$wvalue_arr[$i]'";
+           $i++;
+        }
+        $run = $this->conn->query($upd);   // query run
+        return $run;
+    }
 
 }
 

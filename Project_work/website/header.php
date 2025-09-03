@@ -58,7 +58,7 @@ https://templatemo.com/tm-573-eduwell
                                 <li class="has-sub">
                                 <a href="javascript:void(0)"><?php echo "Hi .." . $_SESSION['u_name']?></a>
                                 <ul class="sub-menu">
-                                    <li><a href="our-services">My Profile</a></li>
+                                    <li><a href="user_profile">My Profile</a></li>
                                     <li><a href="contact-us">My Order</a></li>
                                 </ul>
                             </li>

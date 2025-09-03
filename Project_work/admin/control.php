@@ -157,35 +157,35 @@ class control extends model
                 include_once('admin_account.php');
                 break;
 
-
             case '/delete':
                 if (isset($_REQUEST['del_contact'])) {
-                    $id=$_REQUEST['del_contact'];
-                    $where=array("id"=>$id);
-                    $res=$this->delete_where('contact',$where);
-                    if($res)
-                    {
-                         echo "<script>
+                    $id = $_REQUEST['del_contact'];
+                    $where = array("id" => $id);
+                    $res = $this->delete_where('contact', $where);
+                    if ($res) {
+                        echo "<script>
                             alert('Contact Deleted Success!');
                         </script>";
                     }
-                }
-                if (isset($_REQUEST['del_category'])) {
-                      $id=$_REQUEST['del_category'];
-                    $where=array("id"=>$id);
-                    $res=$this->delete_where('categor',$where);
-                    if($res)
-                    {
-                         echo "<script>
-                            alert('Contact Deleted Success!');
-                        </script>";
-                    }
-                }
-                if (isset($_REQUEST['del_customer'])) {
-                }
-                if (isset($_REQUEST['del_product'])) {
                 }
 
+                if (isset($_REQUEST['del_category'])) {
+                    $id = $_REQUEST['del_category'];
+                    $where = array("id" => $id);
+                    $res = $this->delete_where('categor', $where);
+                    if ($res) {
+                        echo "<script>
+                            alert('Contact Deleted Success!');
+                        </script>";
+                    }
+                }
+
+                if (isset($_REQUEST['del_customer'])) {
+                
+                }
+
+                if (isset($_REQUEST['del_product'])) {
+                }
                 break;
         }
     }
