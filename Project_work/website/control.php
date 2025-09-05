@@ -87,21 +87,33 @@ class control extends model
                     if($chk==1) // 1 means true & 0 false
                     {
                         $data=$res->fetch_object(); // data fetch single
-                        //CREATE SESSION
-                        $_SESSION['u_name']=$data->name;
-                        $_SESSION['u_email']=$data->email;
-                        $_SESSION['u_id']=$data->id;
+						
+						if($data->status=="Unblock")
+						{
+							
+							//CREATE SESSION
+							$_SESSION['u_name']=$data->name;
+							$_SESSION['u_email']=$data->email;
+							$_SESSION['u_id']=$data->id;
 
 
-                        echo "<script>
-                            alert('Login Success!');
-                            window.location='index';
-                        </script>";
+							echo "<script>
+								alert('Login Success!');
+								window.location='index';
+							</script>";
+						}
+						else
+						{
+							echo "<script>
+                            alert('Login Failed due to Blocked Account so Contact us!');
+                            window.location='login';
+							</script>";
+						}
                     }
                     else
                     {
                         echo "<script>
-                            alert('Login Failed!');
+                            alert('Login Failed due to wrong credential!');
                             window.location='login';
                         </script>";
                     }

@@ -43,6 +43,7 @@
 					<td><?php echo $data->gender;?></td>
 					<td><img src="../website/assets/images/customers/<?php echo $data->image;?>" width="50px" alt=""></td>
 					<td  class="text-center">
+						<a href="status?status_customer=<?php echo $data->id;?>" class="btn btn-primary"><?php echo $data->status;?></a>
 						<a href="" class="btn btn-primary">Edit</a>
 						<a href="delete?dlt_customer=<?php echo $data->id;?>" class="btn btn-danger">Delete</a>
 					</td>

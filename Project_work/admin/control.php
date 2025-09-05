@@ -20,7 +20,9 @@ class control extends model
                 if (isset($_REQUEST['submit'])) {
 
                     $email = $_REQUEST['email'];
-                    $password = md5($_REQUEST['password']);
+					$pass=$_REQUEST['password'];
+					
+                    $password = md5($pass);
                     $data = array(
                         "email" => $email,
                         "password" => $password
@@ -35,7 +37,13 @@ class control extends model
                         $_SESSION['a_name'] = $data->name;
                         $_SESSION['a_email'] = $data->email;
                         $_SESSION['a_id'] = $data->id;
-
+						
+						if(isset($_REQUEST['rem']))
+						{
+							setcookie('cookie_email',$email,time()+15);
+							setcookie('cookie_pass',$pass,time()+15);
+						}
+						
                         echo "<script>
                             alert('Login Success!');
                             window.location='dashboard';
@@ -92,6 +100,56 @@ class control extends model
                 $cate_arr = $this->select('categories');
                 include_once('manage_categories.php');
                 break;
+				
+			 case '/edit_categories':
+				 if (isset($_REQUEST['edit_cate'])) {
+                    $id = $_REQUEST['edit_cate'];
+                    $where = array("id" => $id);
+                    $res = $this->select_where('categories', $where);
+                    $fetch=$res->fetch_object();
+					
+					 if (isset($_REQUEST['submit'])) {
+
+						$cate_name = $_REQUEST['cate_name'];
+						
+						if($_FILES['cate_image']['size']>0)
+						{
+							
+							unlink('assets/images/categories/' . $fetch->cate_image);
+							
+							$cate_image = $_FILES['cate_image']['name'];
+							$path = 'assets/images/categories/' . $cate_image;
+							$dup_img = $_FILES['cate_image']['tmp_name'];
+							move_uploaded_file($dup_img, $path);
+
+							$data = array("cate_name" => $cate_name, "cate_image" => $cate_image);
+
+							$res = $this->update('categories', $data, $where);
+							if ($res) {
+								echo "<script>
+									alert('Category Updated Success!');
+									window.location='manage_categories';
+								</script>";
+							}
+						}
+						else
+						{
+							$data = array("cate_name" => $cate_name);
+
+							$res = $this->update('categories', $data, $where);
+							if ($res) {
+								echo "<script>
+									alert('Category Updated Success!');
+									window.location='manage_categories';
+								</script>";
+							}
+						}
+						
+                }
+					
+                }
+                include_once('edit_categories.php');
+                break;	
 
             case '/add_product':
                 $cate_arr = $this->select('categories');
@@ -172,8 +230,16 @@ class control extends model
                 if (isset($_REQUEST['del_category'])) {
                     $id = $_REQUEST['del_category'];
                     $where = array("id" => $id);
-                    $res = $this->delete_where('categor', $where);
+					
+					// get del image first then delete data
+					$res = $this->select_where('categories', $where);
+                    $fetch=$res->fetch_object();
+					$old_img=$fetch->cate_image;
+					
+                    $res = $this->delete_where('categories', $where);
                     if ($res) {
+						
+						unlink('assets/images/categories/' . $old_img);
                         echo "<script>
                             alert('Contact Deleted Success!');
                         </script>";
@@ -187,6 +253,51 @@ class control extends model
                 if (isset($_REQUEST['del_product'])) {
                 }
                 break;
+				
+				case '/status':
+                if (isset($_REQUEST['status_customer'])) {
+					
+                    $id = $_REQUEST['status_customer'];
+                    $where = array("id" => $id);
+                    $res = $this->select_where('customer', $where);
+					$fetch=$res->fetch_object();
+					
+					//echo $fetch->status;
+						
+					if($fetch->status=="Unblock")
+					{
+						$arr=array("status"=>"Block");
+						$res=$this->update('customer', $arr, $where);
+						if ($res) {
+							
+							unset($_SESSION['u_id']);
+							unset($_SESSION['u_name']);
+							unset($_SESSION['u_email']);
+							echo "<script>
+								alert('Customer Blocked Success!');
+								window.location='manage_customer';
+							</script>";
+						}
+					}
+					else
+					{
+						$arr=array("status"=>"Unblock");
+						$res=$this->update('customer', $arr, $where);
+						if ($res) {
+							echo "<script>
+								alert('Customer Unblock Success!');
+								window.location='manage_customer';
+							</script>";
+						}
+					}
+					
+					
+                }
+
+                
+                break;
+				
+				
         }
     }
 }
