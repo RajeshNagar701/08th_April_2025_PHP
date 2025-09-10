@@ -1,38 +1,45 @@
 
-<p id="test">Hello</p>
 
-<p id="test1">Hello</p>
+<h1 id="demo1">Hi i am html</h1>
 
+<h1 id="demo2">Hi i am html</h1>
 
-<input type="text" id="test2"  value="mikey mouse">
+<input type="text" id="demo3" value="Micky Mouse">
 
 <script>
-document.getElementById('test').innerHTML="<H1>Print HTML<H1>"; 
+	
+	document.getElementById('demo1').innerHTML="<h1>Hi i am Javascript HTML</h1>";
+	
+	document.getElementById('demo2').innerText="<h1>Hi i am Javascript TEXT</h1>";
+	
+	document.getElementById('demo3').value="Donald Duck";
 
-
-document.getElementById('test1').innerText="<H1>Print Text<H1>"; 
-
-
-document.getElementById('test2').value="Shaktiman"; 
 </script>
+
 
 <hr>
 
-<p id="demo1">Hello Html</p>
-
-<p id="demo2">Hello Text</p>
-
-
-<input type="text" id="demo3"  value="mikey mouse">
+<p id="test1"></p>
+<p id="test2"></p>
+<input type="text" id="test3">
 
 
-<hr>
 <script>
-var html=document.getElementById('demo1').innerHTML; 
-
-
-var text=document.getElementById('demo2').innerText; 
-
-
-var value=document.getElementById('demo3').value; 
+	
+	var html=document.getElementById('demo1').innerHTML;
+	document.getElementById('test1').innerHTML=html; 
+	
+	
+	var text=document.getElementById('demo2').innerText;
+	document.getElementById('test2').innerText=text; 
+	
+	
+	var value=document.getElementById('demo3').value;
+	document.getElementById('test3').value=value; 
+	
 </script>
+
+
+
+
+

@@ -7,18 +7,20 @@
 
 <script>
 
-function plus(){
-	var num=document.getElementById('number').innerText;
-	num++;
-	document.getElementById('number').innerText=num;
-}
-
-function minus(){
-	var num=document.getElementById('number').innerText;
-	if(num>0)
-	{
-	num--;
-	document.getElementById('number').innerText=num;
+	function plus(){
+		var num=document.getElementById('number').innerHTML;
+		num++;
+		document.getElementById('number').innerHTML=num;
 	}
-}
+	
+	function minus(){
+		var num=document.getElementById('number').innerHTML;
+		if(num>0)
+		{
+			num--;
+			document.getElementById('number').innerHTML=num;
+		}
+	}
+	
+
 </script>
