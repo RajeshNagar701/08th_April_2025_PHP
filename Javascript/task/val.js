@@ -1,22 +1,33 @@
 
 function reg_form(str)
 {
-	//required
+	// document.getElementById("uname").value;
 	if(str.uname.value=="")
 	{
 	document.getElementById("msg1").innerHTML="! Please enter Some Value in User Name";
 	str.uname.focus();
 	return false;
 	}
-			
-	// alpha		
+	
+	/*
+	
+	pattern
+	
+	match(/^[a-zA-Z]+$/)   ALPHA 
+	match(/^[0-9]+$/)   NUMBER 
+	
+	match(/^[0-9]{8,12}$/)   NUMBER + MIN & MAX
+	match(/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,3})+$/))
+	
+	
+	*/
+	
 	if(!str.uname.value.match(/^[a-zA-Z]{1,}$/))
 	{
 	document.getElementById("msg1").innerHTML="! Please enter Only Character Value";
 	str.uname.focus();
 	return false;
 	}
-	
 	
 	if(str.pass.value=="")
 	{
@@ -26,11 +37,25 @@ function reg_form(str)
 	}
 	
 	
-	if(str.pass.value.length<8)
+	if(str.pass.value.length<8 || str.pass.value.length>12)
 	{
-	document.getElementById("msg1").innerHTML="! Please enter minimum 8 digit length";
+	document.getElementById("msg1").innerHTML="! Please enter between 8 to 12 digit length";
 	str.pass.focus();
 	return false;
+	}
+	
+	if(str.cpass.value=="")
+	{
+	document.getElementById("msg1").innerHTML="! Please enter Some Value in Confirm Password";
+	str.cpass.focus();
+	return false;
+	}
+	
+	if(str.pass.value!=str.cpass.value)
+	{
+		document.getElementById("msg1").innerHTML="! Please enter same Value in Confirm Password";
+		str.cpass.focus();
+		return false;
 	}
 	
 	if(str.email.value=="")
@@ -39,7 +64,7 @@ function reg_form(str)
 	str.email.focus();
 	return false;
 	}
-	// email check
+	
 	if(!str.email.value.match(/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,3})+$/))
 	{
 	document.getElementById("msg1").innerHTML="! Please enter Correct Email Address";
@@ -118,8 +143,10 @@ function reg_form(str)
 	}
 	
 	var image = document.getElementById("photo");
+	// size/(1024*1024)
     var img_size_mb = parseFloat(image.files[0].size / (1024 * 1024)).toFixed(2); 
-     if(img_size_mb > 2) 
+     
+	 if(img_size_mb > 0.05) 
 	 {
 		 document.getElementById("msg1").innerHTML="! Please select image size less than 2 MB ";
 		 str.photo.focus();
@@ -152,28 +179,23 @@ function reg_form(str)
 }
 	
 	
-	
-	
-	
-	
-	
-	
 	//below function is for image validation
 	function check(file)
 	{
 	
 	var filename=file.value;
-	var ext=filename.substring(filename.lastIndexOf('.')+1);
+	var ext=filename.substring(filename.lastIndexOf('.')+1); // get ext from file name
+	
 		if(ext=="jpg" || ext=="png" || ext=="jpeg" || ext=="gif" || ext=="JPG" || 
 		ext=="PNG" || ext=="JPEG" || ext=="GIF")
 		{
-		document.getElementById("msg1").innerHTML="";
-		document.getElementById("submit").disabled=false;
+			document.getElementById("msg1").innerHTML="";
+			document.getElementById("submit").disabled=false;
 		}
 		else
 		{
-		document.getElementById("msg1").innerHTML="! Please upload only JPG , GIF , JPEG File";
-		document.getElementById("submit").disabled=true;
+			document.getElementById("msg1").innerHTML="! Please upload only JPG , GIF , JPEG File";
+			document.getElementById("submit").disabled=true;
 		}
 	} 
 	
@@ -181,7 +203,8 @@ function reg_form(str)
 	{
 	
 	var filename=file.value;
-	var ext=filename.substring(filename.lastIndexOf('.')+1);
+	var ext=filename.substring(filename.lastIndexOf('.')+1); // get ext from file name
+	
 		if(ext=="pdf" || ext=="PDF")
 		{
 			document.getElementById("msg1").innerHTML="";
@@ -193,5 +216,3 @@ function reg_form(str)
 			document.getElementById("submit").disabled=true;
 		}
 	} 
-	
-	

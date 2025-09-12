@@ -1,0 +1,72 @@
+
+
+
+<script>
+	
+	/*
+	
+	function val(arg)
+	{			this.id.value
+		var ufn=arg.ufn.value;
+		if()
+	}
+	
+	val(this);
+	
+	*/
+</script>
+
+
+
+
+
+
+
+<form action="" method="post" onsubmit="return validation3(this)">
+			
+			
+			
+			<table border="2" align="center">
+            	<tr>
+                	<th colspan="2"> Registration 3 </th>
+                </tr>
+                <tr>
+            		<th>User Fist Name:-</th>
+                    <td><input type="text" name="ufn" id="ufn"></td>
+                </tr>
+				<tr>
+            		<th>User Last Name:-</th>
+                    <td>
+						<input type="text" name="uln" id="uln">
+					</td>
+                </tr>
+                <tr>
+                	<td><input type="submit" name="submit"/></td>
+                </tr>
+            </table>
+                <p style="color:red" id="msg" align="center"></p>
+        </form>
+
+
+<hr>
+
+<script>
+function validation3(arg){
+	
+	var ufn=arg.ufn.value;
+	if(ufn=="")
+	{
+		document.getElementById('msg').innerHTML='ufn Field is required';
+		arg.ufn.focus();
+		return false;
+	}
+	
+	var uln=arg.uln.value;
+	if(uln=="")
+	{
+		document.getElementById('msg').innerHTML='uln Field is required';
+		arg.uln.focus();
+		return false;
+	}
+}
+</script>

@@ -6,7 +6,11 @@ var car1 = "Saab";
 var car2 = "Volvo";
 var car3 = "BMW";
 
+
+
 var cars=["Saab","Volvo","BMW"];   // $phparr=array("Saab","Volvo","BMW")
+$cars=array("Saab","Volvo","BMW")
+
 
 Access the Elements of an Array
 You access an array element by referring to the index number.
@@ -21,15 +25,10 @@ document.write(cars[1] + "<br>");
 
 // ====================================================================================
 
-var students=["Jinal","Sahil","Kamlesh","Jainik","Jainam","Saloni","Kajal"];
-for(var i=0;i<students.length;i++)
+for(data of cars)   // foreach(cars as data)
 {
-	document.write("<p>" + students[i] + "</p>");
+	document.write(data + "<br>");
 }
 
-for(data of students)
-{
-	document.write("<h1>" + data + "</h1>");
-}
 
 </script>
