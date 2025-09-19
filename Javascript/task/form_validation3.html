@@ -7,7 +7,7 @@
 	
 	function val(arg)
 	{			this.id.value
-		var ufn=arg.ufn.value;
+		var ufn=arg.ufn.value; //document.getElementById('ufn').value;
 		if()
 	}
 	
@@ -25,7 +25,7 @@
 <form action="" method="post" onsubmit="return validation3(this)">
 			
 			
-			
+			<h4 align="center" id="msg" style="color:red"></h4>
 			<table border="2" align="center">
             	<tr>
                 	<th colspan="2"> Registration 3 </th>
@@ -44,7 +44,7 @@
                 	<td><input type="submit" name="submit"/></td>
                 </tr>
             </table>
-                <p style="color:red" id="msg" align="center"></p>
+                
         </form>
 
 
@@ -56,16 +56,16 @@ function validation3(arg){
 	var ufn=arg.ufn.value;
 	if(ufn=="")
 	{
-		document.getElementById('msg').innerHTML='ufn Field is required';
 		arg.ufn.focus();
+		document.getElementById('msg').innerHTML='User First Name field is required !';
 		return false;
 	}
 	
 	var uln=arg.uln.value;
 	if(uln=="")
 	{
-		document.getElementById('msg').innerHTML='uln Field is required';
 		arg.uln.focus();
+		document.getElementById('msg').innerHTML='User Last Name field is required !';
 		return false;
 	}
 }

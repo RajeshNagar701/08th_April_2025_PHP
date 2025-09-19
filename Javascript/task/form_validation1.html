@@ -1,4 +1,4 @@
-	<form action="" method="post" onsubmit="return validation1()">
+	<form action="" method="post" onsubmit="return validation()">
 		<table border="2" align="center">
 			<tr>
 				<th> Registration 1 </th>
@@ -24,18 +24,20 @@
 
 <script>
 	
-	function validation1(){
-		
+	function validation(){
+	
 		var ufn=document.getElementById('ufn').value;
 		if(ufn=="" || ufn==null)
 		{
-			alert('User First Name field is required');
+			alert('User Firts Name field is required !');
+			document.getElementById('ufn').focus();
 			return false;
 		}
 		var uln=document.getElementById('uln').value;
 		if(uln=="" || uln==null)
 		{
-			document.getElementById('ulnmsg').innerHTML='User Last Name field is required';
+			document.getElementById('ulnmsg').innerHTML='User Last Name field is required !';
+			document.getElementById('uln').focus();
 			return false;
 		}
 	}
