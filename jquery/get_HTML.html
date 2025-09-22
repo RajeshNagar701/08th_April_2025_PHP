@@ -2,10 +2,20 @@
 
 <!--
 
+get data
+
 $("#element");      // document.getElementById("#element")
-$("#test").text();  // document.getElementById("#test").InnerText
-$("#test").html();   // document.getElementById("#element").InnerHTML
-$("#value").val();   // document.getElementById("#element").value
+var text=$("#test").text();  // document.getElementById("#test").InnerText
+var html=$("#test").html();   // document.getElementById("#element").InnerHTML
+var value=$("#value").val();   // document.getElementById("#element").value
+
+
+set data
+
+
+$("#test").text("Hello i am text");               // document.getElementById("#test").InnerText="Hello i am text"
+$("#test").html("<h1>Hello i am text</h1>");      // document.getElementById("#element").InnerHTML="<h1>Hello i am text</h1>"
+$("#value").val("Nagar");                         // document.getElementById("#element").value="Nagar";
 
 -->
 
