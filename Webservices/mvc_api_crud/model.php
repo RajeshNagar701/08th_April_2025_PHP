@@ -25,7 +25,11 @@ class model
 		}
 		if(!empty($arr))
 		{
-			return $arr;
+            return $arr;
+		}
+		else
+		{
+		    return $arr=array();
 		}
 	}
 	
@@ -39,8 +43,9 @@ class model
 		}
 		if(!empty($arr))
 		{
-			return $arr;
+            return $arr;
 		}
+		
 	}
 	
 	function insert($tbl,$arr)
@@ -53,7 +58,7 @@ class model
 		$value_arr=array_values($arr);
 		$value=implode("','",$value_arr); // 'name','email',comment','created_at','udated_at'
 
-		echo $ins="insert into $tbl ($column) value ('$value')";  // query
+		$ins="insert into $tbl ($column) value ('$value')";  // query
 		$run=$this->conn->query($ins);  // run on db
 		return $run;
 	}
@@ -66,12 +71,14 @@ class model
 		$i=0;
 		foreach($where as $w)
 		{
-			echo $del.=" and $col_arr[$i]='$value_arr[$i]'";
+			$del.=" and $col_arr[$i]='$value_arr[$i]'";
 			$i++;
 		}
 		$run=$this->conn->query($del);  // run on db
 		return $run;
 	}
+	
+	
 	
 	function select_where($tbl,$where)
 	{
@@ -82,12 +89,44 @@ class model
 		$i=0;
 		foreach($where as $w)
 		{
-			echo $sel.=" and $col_arr[$i]='$value_arr[$i]'";
+			$sel.=" and $col_arr[$i]='$value_arr[$i]'";
 			$i++;
 		}
 		$run=$this->conn->query($sel);  // run on db
 		return $run;
 	}
+	
+	
+	function select_where_arr($tbl,$where)
+	{
+		$col_arr=array_keys($where);
+		$value_arr=array_values($where);
+		
+		$sel="select * from $tbl where 1=1";  // query
+		$i=0;
+		foreach($where as $w)
+		{
+			$sel.=" and $col_arr[$i]='$value_arr[$i]'";
+			$i++;
+		}
+		$run=$this->conn->query($sel);  // run on db
+		while($fetch=$run->fetch_object()) // fetch all data from database
+		{
+			$arr[]=$fetch;
+		}
+		if(!empty($arr))
+		{
+            return $arr;
+		}
+		else
+		{
+		    return $arr=array();
+		}
+	}
+	
+	
+	
+	
 	
 	function select_where_join($tbl1,$tbl2,$on,$where)
 	{
@@ -98,7 +137,7 @@ class model
 		$i=0;
 		foreach($where as $w)
 		{
-			echo $sel.=" and $col_arr[$i]='$value_arr[$i]'";
+			$sel.=" and $col_arr[$i]='$value_arr[$i]'";
 			$i++;
 		}
 		$run=$this->conn->query($sel);  // run on db
@@ -131,7 +170,7 @@ class model
 		$i=0;
 		foreach($where as $w)
 		{
-			echo $upd.=" and $col_where[$i]='$value_where[$i]'";
+			$upd.=" and $col_where[$i]='$value_where[$i]'";
 			$i++;
 		}
 		$run=$this->conn->query($upd);  // run on db
@@ -142,5 +181,4 @@ class model
 	
 }
 $obj=new model;
-
 ?>
