@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+	<customer>
+		<id>8</id>
+		<name>nagarnagar</name>
+		<email>naganagarr@gmail.com</email>
+		<password>81dc9bdb52d04dc20036dbd8313ed055</password>
+		<mobile>11114567891</mobile>
+		<lag>Hindi,English,Gujarati</lag>
+		<gender>Male</gender>
+		<image>wd_basic.jpg</image>
+		<status>Unblock</status>
+		
+		<id>9</id>
+		<name>nisha</name>
+		<email>nisha@gmail.com</email>
+		<password>81dc9bdb52d04dc20036dbd8313ed055</password>
+		<mobile>12548787777</mobile>
+		<lag>Hindi,English</lag>
+		<gender>Female</gender>
+		<image>wd.jpg</image>
+		<status>Unblock</status>
+		
+	</customer>
+</xml>
