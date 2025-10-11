@@ -18,7 +18,7 @@ Keyboard Events
 Form Events	Document/Window Events
 
 
-click	
+click	   onclick
 unload
 keypress	
 submit	
@@ -45,7 +45,7 @@ blur
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
-  $("#p1").hover(function(){
+  $("#p1").click(function(){
     alert("You entered p1!");
   }); 
 });

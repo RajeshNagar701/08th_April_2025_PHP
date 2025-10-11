@@ -15,7 +15,7 @@
 <script>
 $(document).ready(function(){
   $("#hide").click(function(){
-    $("#test").hide(5000);
+    $("#test").hide();
   });
   
    $("#show").click(function(){
@@ -23,7 +23,7 @@ $(document).ready(function(){
   });
     
    $("#toggle").click(function(){
-    $("p").toggle();
+    $("p").toggle(5000);
   });	
   
   });

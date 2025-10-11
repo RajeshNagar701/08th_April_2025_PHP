@@ -3,10 +3,12 @@
 jQuery Manipulating CSS
 jQuery has several methods for CSS manipulation. We will look at the following methods:
 
+css() - Sets or returns the style attribute
+
+
 addClass() - Adds one or more classes to the selected elements
 removeClass() - Removes one or more classes from the selected elements
 toggleClass() - Toggles between adding/removing classes from the selected elements
-css() - Sets or returns the style attribute
 
 -->
 
@@ -22,15 +24,13 @@ css() - Sets or returns the style attribute
 $(document).ready(function(){
 
   $("#btn1").click(function(){
-    $("h1, h2, p").addClass("important blue");
+    $("h1, h2, p").addClass("important blue upper");
  	});
-	
   $("#btn2").click(function(){
-    $("h1, h2, p").removeClass("important blue");
+    $("h1, h2, p").removeClass("important blue upper");
     });
-	
    $("#btn3").click(function(){
-    $("h1, h2, p").toggleClass("important blue");
+    $("h1, h2, p").toggleClass("important blue upper");
     });	
 	
 });
@@ -44,6 +44,10 @@ $(document).ready(function(){
 .blue {
   color: blue;
 }
+.upper{
+	text-transform:uppercase;
+}
+
 </style>
 </head>
 <body>
