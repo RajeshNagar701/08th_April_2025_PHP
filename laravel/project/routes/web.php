@@ -1,6 +1,14 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\Controller3;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -12,6 +20,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+//Route::get('/invoke',Controller3::class); //,call invoke controller function
+
+
 
 Route::get('/', function () {
     return view('website.index');
@@ -25,9 +37,8 @@ Route::get('/about', function () {
     return view('website.about');
 });
 
-Route::get('/service', function () {
-    return view('website.service');
-});
+Route::get('/service',[ServiceController::class,'index']);
+
 
 Route::get('/price', function () {
     return view('website.price');
@@ -46,8 +57,19 @@ Route::get('/team', function () {
 });
 
 Route::get('/testimonial', function () {
+
     return view('website.testimonial');
 });
+
+Route::get('/contact',[ContactController ::class,'create']);
+Route::post('/add_contact',[ContactController ::class,'store']);
+
+
+Route::get('/login',[CustomerController ::class,'login']);
+Route::post('/auth',[CustomerController ::class,'auth_login']);
+
+Route::get('/signup',[CustomerController ::class,'create']);
+Route::post('/add_signup',[CustomerController ::class,'store']);
 
 Route::get('/404', function () {
     return view('website.404');
@@ -61,14 +83,13 @@ Route::get('/dashboard', function () {
     return view('admin.dashboard');
 });
 
-Route::get('/admin-login', function () {
-    return view('admin.admin-login');
-});
+Route::get('/admin-login',[AdminController::class,'index']);
 
-Route::get('/manage', function () {
-    return view('admin.manage');
-});
+Route::get('/add_services',[ServiceController::class,'create']);
+Route::get('/manage_services',[ServiceController::class,'show']);
 
-Route::get('/add-service', function () {
-    return view('admin.add-service');
-});
+Route::get('/add_categories',[CategoryController::class,'create']);
+Route::get('/manage_categories',[CategoryController::class,'show']);
+Route::get('/manage_contacts',[ContactController::class,'show']);
+
+Route::get('/manage_customers',[CustomerController::class,'show']);

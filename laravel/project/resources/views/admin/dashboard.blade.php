@@ -35,7 +35,7 @@
               <li class="nav-item dropdown">
                 <a class="nav-link " href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
                   aria-expanded="false">
-                  <img src="./assets/images/profile/user-1.jpg" alt="" width="35" height="35" class="rounded-circle">
+                  <img src="<?php echo url('admin/images/profile/user-1.jpg')?>" alt="" width="35" height="35" class="rounded-circle">
                 </a>
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                   <div class="message-body">
@@ -208,7 +208,7 @@
                         <tr>
                           <td class="px-0">
                             <div class="d-flex align-items-center">
-                              <img src="./assets/images/profile/user-3.jpg" class="rounded-circle" width="40"
+                              <img src="<?php echo url('admin/images/profile/user-3.jpg')?>" class="rounded-circle" width="40"
                                 alt="flexy" />
                               <div class="ms-3">
                                 <h6 class="mb-0 fw-bolder">Sunil Joshi</h6>
@@ -227,7 +227,7 @@
                         <tr>
                           <td class="px-0">
                             <div class="d-flex align-items-center">
-                              <img src="./assets/images/profile/user-5.jpg" class="rounded-circle" width="40"
+                              <img src="<?php echo url('admin/images/profile/user-5.jpg')?>" class="rounded-circle" width="40"
                                 alt="flexy" />
                               <div class="ms-3">
                                 <h6 class="mb-0 fw-bolder">
@@ -248,7 +248,7 @@
                         <tr>
                           <td class="px-0">
                             <div class="d-flex align-items-center">
-                              <img src="./assets/images/profile/user-6.jpg" class="rounded-circle" width="40"
+                              <img src="<?php echo url('admin/images/profile/user-6.jpg')?>" class="rounded-circle" width="40"
                                 alt="flexy" />
                               <div class="ms-3">
                                 <h6 class="mb-0 fw-bolder">
@@ -269,7 +269,7 @@
                         <tr>
                           <td class="px-0">
                             <div class="d-flex align-items-center">
-                              <img src="./assets/images/profile/user-7.jpg" class="rounded-circle" width="40"
+                              <img src="<?php echo url('admin/images/profile/user-7.jpg')?>" class="rounded-circle" width="40"
                                 alt="flexy" />
                               <div class="ms-3">
                                 <h6 class="mb-0 fw-bolder">Nirav Joshi</h6>
@@ -288,7 +288,7 @@
                         <tr>
                           <td class="px-0">
                             <div class="d-flex align-items-center">
-                              <img src="./assets/images/profile/user-8.jpg" class="rounded-circle" width="40"
+                              <img src="<?php echo url('admin/images/profile/user-8.jpg')?>" class="rounded-circle" width="40"
                                 alt="flexy" />
                               <div class="ms-3">
                                 <h6 class="mb-0 fw-bolder">Micheal Doe</h6>
@@ -320,7 +320,7 @@
                   <!-- Comment Row -->
                   <div class="d-flex flex-row comment-row border-bottom p-3 gap-3">
                     <div>
-                      <span><img src="./assets/images/profile/user-3.jpg" class="rounded-circle" alt="user"
+                      <span><img src="<?php echo url('admin/images/profile/user-3.jpg')?>" class="rounded-circle" alt="user"
                           width="50" /></span>
                     </div>
                     <div class="comment-text w-100">
@@ -358,7 +358,7 @@
                   <!-- Comment Row -->
                   <div class="d-flex flex-row comment-row border-bottom active p-3 gap-3">
                     <div>
-                      <span><img src="./assets/images/profile/user-5.jpg" class="rounded-circle" alt="user"
+                      <span><img src="<?php echo url('admin/images/profile/user-5.jpg')?>" class="rounded-circle" alt="user"
                           width="50" /></span>
                     </div>
                     <div class="comment-text active w-100">
@@ -396,7 +396,7 @@
                   <!-- Comment Row -->
                   <div class="d-flex flex-row comment-row border-bottom p-3 gap-3">
                     <div>
-                      <span><img src="./assets/images/profile/user-6.jpg" class="rounded-circle" alt="user"
+                      <span><img src="<?php echo url('admin/images/profile/user-6.jpg')?>" class="rounded-circle" alt="user"
                           width="50" /></span>
                     </div>
                     <div class="comment-text w-100">
@@ -434,7 +434,7 @@
                   <!-- Comment Row -->
                   <div class="d-flex flex-row comment-row p-3 gap-3">
                     <div>
-                      <span><img src="./assets/images/profile/user-4.jpg" class="rounded-circle" alt="user"
+                      <span><img src="<?php echo url('admin/images/profile/user-4.jpg')?>" class="rounded-circle" alt="user"
                           width="50" /></span>
                     </div>
                     <div class="comment-text w-100">

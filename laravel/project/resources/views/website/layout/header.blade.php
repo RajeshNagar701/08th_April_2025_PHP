@@ -88,7 +88,7 @@ function active($currect_page){
                 <div class="d-flex">
                     <a class="btn btn-primary btn-sm-square me-3" href=""><i class="fab fa-facebook-f"></i></a>
                     <a class="btn btn-primary btn-sm-square me-3" href=""><i class="fab fa-instagram"></i></a>
-                    <a class="btn btn-primary btn-sm-square" href=""><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-primary btn-sm-square" href="/login">Login</i></a>
                 </div>
             </div>
         </nav>

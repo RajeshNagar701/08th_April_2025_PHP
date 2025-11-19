@@ -14,7 +14,7 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        //
+        return view('website.service');
     }
 
     /**
@@ -24,7 +24,7 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        //
+         return view('admin.add_service');
     }
 
     /**
@@ -46,7 +46,8 @@ class ServiceController extends Controller
      */
     public function show(service $service)
     {
-        //
+         $data=service::all();
+         return view('admin.manage_services',["service"=>$data]);
     }
 
     /**

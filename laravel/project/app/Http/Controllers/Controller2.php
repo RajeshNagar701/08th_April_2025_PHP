@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\category;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class Controller2 extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,7 +23,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.add_categories');
+        //
     }
 
     /**
@@ -35,28 +34,27 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\category  $category
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(category $category)
+    public function show($id)
     {
-        $data=category::all();  // select * from categories
-        return view('admin.manage_categories',["category"=>$data]);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\category  $category
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(category $category)
+    public function edit($id)
     {
         //
     }
@@ -65,10 +63,10 @@ class CategoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\category  $category
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, category $category)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -76,10 +74,10 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\category  $category
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(category $category)
+    public function destroy($id)
     {
         //
     }

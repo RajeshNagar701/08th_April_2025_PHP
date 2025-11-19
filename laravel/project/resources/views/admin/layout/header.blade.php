@@ -1,10 +1,11 @@
 <?php
-function active($currect_page){
-  $url_array =  explode('/', $_SERVER['REQUEST_URI']) ; // current page url
-  $url = end($url_array);  
-  if($currect_page == $url){
-	  echo 'active'; //class name in css 
-  } 
+function active($currect_page)
+{
+  $url_array =  explode('/', $_SERVER['REQUEST_URI']); // current page url
+  $url = end($url_array);
+  if ($currect_page == $url) {
+    echo 'active'; //class name in css 
+  }
 }
 ?>
 
@@ -17,8 +18,8 @@ function active($currect_page){
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Flexy Free Bootstrap Admin Template by WrapPixel</title>
-  <link rel="shortcut icon" type="image/png" href="./assets/images/logos/favicon.png" />
-  <link rel="stylesheet" href="./assets/css/styles.min.css" />
+  <link rel="shortcut icon" type="image/png" href="<?php echo url('admin/images/logos/favicon.png') ?>" />
+  <link rel="stylesheet" href="<?php echo url('admin/css/styles.min.css') ?>" />
 </head>
 
 <body>
@@ -33,13 +34,13 @@ function active($currect_page){
           <img src="assets/images/logos/logo-wrappixel.svg" alt="" width="150">
         </a>
 
-        
+
       </div>
 
       <div class="d-lg-flex align-items-center gap-2">
         <h3 class="text-white mb-2 mb-lg-0 fs-5 text-center">Check Flexy Premium Version</h3>
         <div class="d-flex align-items-center justify-content-center gap-2">
-          
+
           <div class="dropdown d-flex">
             <a class="btn btn-primary d-flex align-items-center gap-1 " href="javascript:void(0)" id="drop4"
               data-bs-toggle="dropdown" aria-expanded="false">
@@ -72,7 +73,7 @@ function active($currect_page){
               <span class="hide-menu">Home</span>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="./index.html" aria-expanded="false">
+              <a class="sidebar-link" href="/dashboard" aria-expanded="false">
                 <i class="ti ti-atom"></i>
                 <span class="hide-menu">Dashboard</span>
               </a>
@@ -81,128 +82,105 @@ function active($currect_page){
             <!-- Dashboard -->
             <!-- ---------------------------------- -->
             <li class="sidebar-item">
-              <a class="sidebar-link justify-content-between"  
-                href="#" aria-expanded="false">
-                <div class="d-flex align-items-center gap-3">
-                  <span class="d-flex">
-                    <i class="ti ti-aperture"></i>
-                  </span>
-                  <span class="hide-menu">Analytical</span>
-                </div>
-                
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link justify-content-between"  
-                href="#" aria-expanded="false">
-                <div class="d-flex align-items-center gap-3">
-                  <span class="d-flex">
-                    <i class="ti ti-shopping-cart"></i>
-                  </span>
-                  <span class="hide-menu">eCommerce</span>
-                </div>
-                
-              </a>
-            </li>
-            <li class="sidebar-item">
               <a class="sidebar-link justify-content-between has-arrow" href="javascript:void(0)" aria-expanded="false">
                 <div class="d-flex align-items-center gap-3">
                   <span class="d-flex">
                     <i class="ti ti-layout-grid"></i>
                   </span>
-                  <span class="hide-menu">Front Pages</span>
+                  <span class="hide-menu">Categories</span>
                 </div>
-                
               </a>
               <ul aria-expanded="false" class="collapse first-level">
                 <li class="sidebar-item">
-                  <a class="sidebar-link justify-content-between"  
-                    href="#">
+                  <a class="sidebar-link justify-content-between"
+                    href="add_categories">
                     <div class="d-flex align-items-center gap-3">
                       <div class="round-16 d-flex align-items-center justify-content-center">
                         <i class="ti ti-circle"></i>
                       </div>
-                      <span class="hide-menu">Homepage</span>
+                      <span class="hide-menu">Add Categories</span>
                     </div>
-                    
                   </a>
                 </li>
                 <li class="sidebar-item">
-                  <a class="sidebar-link justify-content-between"  
-                    href="#">
+                  <a class="sidebar-link justify-content-between"
+                    href="manage_categories">
                     <div class="d-flex align-items-center gap-3">
                       <div class="round-16 d-flex align-items-center justify-content-center">
                         <i class="ti ti-circle"></i>
                       </div>
-                      <span class="hide-menu">About Us</span>
+                      <span class="hide-menu">Manage Categories</span>
                     </div>
-                    
-                  </a>
-                </li>
-                <li class="sidebar-item">
-                  <a class="sidebar-link justify-content-between"  
-                    href="#">
-                    <div class="d-flex align-items-center gap-3">
-                      <div class="round-16 d-flex align-items-center justify-content-center">
-                        <i class="ti ti-circle"></i>
-                      </div>
-                      <span class="hide-menu">Blog</span>
-                    </div>
-                    
-                  </a>
-                </li>
-                <li class="sidebar-item">
-                  <a class="sidebar-link justify-content-between"  
-                    href="#">
-                    <div class="d-flex align-items-center gap-3">
-                      <div class="round-16 d-flex align-items-center justify-content-center">
-                        <i class="ti ti-circle"></i>
-                      </div>
-                      <span class="hide-menu">Blog Details</span>
-                    </div>
-                    
-                  </a>
-                </li>
-                <li class="sidebar-item">
-                  <a class="sidebar-link justify-content-between"  
-                    href="#">
-                    <div class="d-flex align-items-center gap-3">
-                      <div class="round-16 d-flex align-items-center justify-content-center">
-                        <i class="ti ti-circle"></i>
-                      </div>
-                      <span class="hide-menu">Contact Us</span>
-                    </div>
-                    
-                  </a>
-                </li>
-                <li class="sidebar-item">
-                  <a class="sidebar-link justify-content-between"  
-                    href="#">
-                    <div class="d-flex align-items-center gap-3">
-                      <div class="round-16 d-flex align-items-center justify-content-center">
-                        <i class="ti ti-circle"></i>
-                      </div>
-                      <span class="hide-menu">Portfolio</span>
-                    </div>
-                    
-                  </a>
-                </li>
-                <li class="sidebar-item">
-                  <a class="sidebar-link justify-content-between"  
-                    href="#">
-                    <div class="d-flex align-items-center gap-3">
-                      <div class="round-16 d-flex align-items-center justify-content-center">
-                        <i class="ti ti-circle"></i>
-                      </div>
-                      <span class="hide-menu">Pricing</span>
-                    </div>
-                    
-                  </a>
-                </li>
-              </ul>
-            </li>
 
-            
+                  </a>
+                </li>
+
+
+            </li>
+          </ul>
+          </li>
+
+          <li class="sidebar-item">
+            <a class="sidebar-link justify-content-between has-arrow" href="javascript:void(0)" aria-expanded="false">
+              <div class="d-flex align-items-center gap-3">
+                <span class="d-flex">
+                  <i class="ti ti-layout-grid"></i>
+                </span>
+                <span class="hide-menu">Services</span>
+              </div>
+            </a>
+            <ul aria-expanded="false" class="collapse first-level">
+              <li class="sidebar-item">
+                <a class="sidebar-link justify-content-between"
+                  href="add_services">
+                  <div class="d-flex align-items-center gap-3">
+                    <div class="round-16 d-flex align-items-center justify-content-center">
+                      <i class="ti ti-circle"></i>
+                    </div>
+                    <span class="hide-menu">Add Service</span>
+                  </div>
+                </a>
+              </li>
+              <li class="sidebar-item">
+                <a class="sidebar-link justify-content-between"
+                  href="manage_services">
+                  <div class="d-flex align-items-center gap-3">
+                    <div class="round-16 d-flex align-items-center justify-content-center">
+                      <i class="ti ti-circle"></i>
+                    </div>
+                    <span class="hide-menu">Manage Service</span>
+                  </div>
+                </a>
+              </li>
+          </li>
+          </ul>
+          </li>
+
+          <li class="sidebar-item">
+            <a class="sidebar-link justify-content-between"
+              href="/manage_contacts" aria-expanded="false">
+              <div class="d-flex align-items-center gap-3">
+                <span class="d-flex">
+                  <i class="ti ti-aperture"></i>
+                </span>
+                <span class="hide-menu">Manage Contact</span>
+              </div>
+            </a>
+          </li>
+
+          <li class="sidebar-item">
+            <a class="sidebar-link justify-content-between"
+              href="/manage_customers" aria-expanded="false">
+              <div class="d-flex align-items-center gap-3">
+                <span class="d-flex">
+                  <i class="ti ti-aperture"></i>
+                </span>
+                <span class="hide-menu">Manage Customers</span>
+              </div>
+            </a>
+          </li>
+
+
           </ul>
         </nav>
         <!-- End Sidebar navigation -->
