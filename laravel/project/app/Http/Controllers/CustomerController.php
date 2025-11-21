@@ -25,7 +25,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
-         return view('website.signup');
+        return view('website.signup');
     }
 
     /**
@@ -36,18 +36,18 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        $data=new customer();
-        $data->name=$request->name;
-        $data->email=$request->email;
-        $data->pass=Hash::make($request->password);
-        $data->gender=$request->gender;
-        $data->hobby=implode(",",$request->hobby);
-        $data->mobile=$request->mobile;
+        $data = new customer();
+        $data->name = $request->name;
+        $data->email = $request->email;
+        $data->pass = Hash::make($request->pass);
+        $data->gender = $request->gender;
+        $data->hobby = implode(",", $request->hobby);
+        $data->mobile = $request->mobile;
 
-        $image=$request->file('image');  // image get
-        $filename=time().'_img.'.$request->file('image')->getClientOriginalExtension(); // name set
-        $image->move('upload/customers',$filename); // move in public folder
-        $data->image=$filename; // store in name in database
+        $image = $request->file('image');  // image get
+        $filename = time() . '_img.' . $request->file('image')->getClientOriginalExtension(); // name set
+        $image->move('upload/customers', $filename); // move in public folder
+        $data->image = $filename; // store in name in database
 
         $data->save();
         return redirect('/signup');
@@ -55,7 +55,38 @@ class CustomerController extends Controller
 
     public function login()
     {
-         return view('website.login');
+        return view('website.login');
+    }
+
+    public function auth_login(Request $request)
+    {
+
+        $data = customer::where('email', $request->email)->first();
+        if ($data) {
+            if (Hash::check($request->pass, $data->pass)) {
+                if ($data->status == "Unblock") {
+                    echo "<script>
+                    alert('Login success');
+                    window.location='/';
+                    </script>";
+                } else {
+                    echo "<script>
+                    alert('Login Failed due to Blocked Account');
+                    window.location='/login';
+                    </script>";
+                }
+            } else {
+                echo "<script>
+                    alert('Login Failed due to wrong password');
+                    window.location='/login';
+                    </script>";
+            }
+        } else {
+            echo "<script>
+                    alert('Login Failed due wrong email');
+                    window.location='/login';
+                    </script>";
+        }
     }
 
     /**
@@ -66,8 +97,8 @@ class CustomerController extends Controller
      */
     public function show(customer $customer)
     {
-         $data=customer::all();
-        return view('admin.manage_customers',["customer"=>$data]);
+        $data = customer::all();
+        return view('admin.manage_customers', ["customer" => $data]);
     }
 
     /**

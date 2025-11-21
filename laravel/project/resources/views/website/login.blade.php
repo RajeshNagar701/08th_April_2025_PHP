@@ -29,7 +29,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-7">
                    <div class="wow fadeIn" data-wow-delay="0.3s">
-                        <form action="{{url('/add_login')}}" method="post" >
+                        <form action="{{url('/auth_login')}}" method="post" >
                             @csrf
                             <div class="row g-3">
                                
@@ -41,7 +41,7 @@
                                 </div>
                                  <div class="col-md-12">
                                     <div class="form-floating">
-                                        <input type="password" name="password" class="form-control" id="email" placeholder="Your Password">
+                                        <input type="password" name="pass" class="form-control" id="email" placeholder="Your Password">
                                         <label for="password">Your password</label>
                                     </div>
                                 </div>

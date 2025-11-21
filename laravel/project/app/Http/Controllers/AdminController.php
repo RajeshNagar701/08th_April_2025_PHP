@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\admin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -16,6 +17,33 @@ class AdminController extends Controller
     {
          return view('admin.admin-login');
     }
+    
+    public function admin_auth_login(Request $request)
+    {
+
+       $data=admin::where('email',$request->email)->first();
+       if($data)
+       {
+            if(Hash::check($request->pass,$data->pass))
+            {
+               echo "<script>
+                    alert('Login success');
+                    window.location='/dashboard';
+                    </script>";
+            } else {
+                echo "<script>
+                    alert('Login Failed due to wrong password');
+                    window.location='/admin-login';
+                    </script>";
+            }
+        } else {
+           echo "<script>
+           alert('Login Failed due wrong email');
+           window.location='/admin-login';
+           </script>";
+        }
+    }
+
 
     /**
      * Show the form for creating a new resource.

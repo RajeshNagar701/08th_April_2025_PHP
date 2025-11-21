@@ -66,7 +66,7 @@ Route::post('/add_contact',[ContactController ::class,'store']);
 
 
 Route::get('/login',[CustomerController ::class,'login']);
-Route::post('/auth',[CustomerController ::class,'auth_login']);
+Route::post('/auth_login',[CustomerController ::class,'auth_login']);
 
 Route::get('/signup',[CustomerController ::class,'create']);
 Route::post('/add_signup',[CustomerController ::class,'store']);
@@ -84,6 +84,8 @@ Route::get('/dashboard', function () {
 });
 
 Route::get('/admin-login',[AdminController::class,'index']);
+Route::post('/admin_auth_login',[AdminController ::class,'admin_auth_login']);
+
 
 Route::get('/add_services',[ServiceController::class,'create']);
 Route::get('/manage_services',[ServiceController::class,'show']);
