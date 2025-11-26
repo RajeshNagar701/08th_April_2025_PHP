@@ -58,6 +58,11 @@
                                 <div class="col-12">
                                     <button name="submit" class="btn btn-primary w-100 py-3 ms-0" type="submit">SEND MESSAGE</button>
                                 </div>
+
+                                    @if(session('Success'))
+                                    <h3 style="color:green">{{session('Success')}} is added success</h3>
+                                    @endif
+
                             </div>
                         </form>
                     </div>

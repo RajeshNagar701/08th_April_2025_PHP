@@ -15,18 +15,21 @@ class AdminController extends Controller
      */
     public function index()
     {
-         return view('admin.admin-login');
+        return view('admin.admin-login');
     }
-    
+
     public function admin_auth_login(Request $request)
     {
 
-       $data=admin::where('email',$request->email)->first();
-       if($data)
-       {
-            if(Hash::check($request->pass,$data->pass))
-            {
-               echo "<script>
+        $data = admin::where('email', $request->email)->first();
+        if ($data) {
+            if (Hash::check($request->pass, $data->pass)) {
+                
+                // session create
+                Session()->put('aname', $data->name);  // $_SESSION['cname']=$data->name
+                Session()->put('aid', $data->id);
+
+                echo "<script>
                     alert('Login success');
                     window.location='/dashboard';
                     </script>";
@@ -37,7 +40,7 @@ class AdminController extends Controller
                     </script>";
             }
         } else {
-           echo "<script>
+            echo "<script>
            alert('Login Failed due wrong email');
            window.location='/admin-login';
            </script>";
@@ -45,6 +48,13 @@ class AdminController extends Controller
     }
 
 
+    public function admin_logout()
+    {
+
+        Session()->pull('aid');
+        Session()->pull('aname');
+        return redirect('/admin-login');
+    }
     /**
      * Show the form for creating a new resource.
      *

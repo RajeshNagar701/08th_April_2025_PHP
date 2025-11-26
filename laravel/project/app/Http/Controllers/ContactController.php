@@ -39,7 +39,7 @@ class ContactController extends Controller
         $data->email=$request->email;
         $data->comment=$request->comment;
         $data->save();
-        return redirect('/contact');
+        return back()->with('Success', 'Register Success'); 
     }
 
     /**
@@ -83,8 +83,11 @@ class ContactController extends Controller
      * @param  \App\Models\contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function destroy(contact $contact)
+    public function destroy(contact $contact,$id)
     {
-        //
+        $data=contact::find($id);
+        $del_data=$data->name;
+        $data->delete();
+        return back()->with('delete', $del_data);
     }
 }

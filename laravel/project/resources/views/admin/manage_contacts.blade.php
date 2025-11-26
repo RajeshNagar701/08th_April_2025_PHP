@@ -3,56 +3,59 @@
 @section('content')
 
 
-    <!--  Main wrapper -->
-    <div class="body-wrapper">
-      
-	  
-      <div class="body-wrapper-inner">
-        <div class="container-fluid">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title fw-semibold mb-4">Contacts</h5>
-              <p class="mb-0">Manage Contacts </p>
-			  
-			  <table class="table table-striped">
-				<thead>
-				  <tr>
-					<th>#ID</th>
-					<th>Name</th>
-					<th>Email</th>
-					<th>Comment</th>
-					<th>Created_at</th>
-					<th>Updated_at</th>
-					<th class="text-center">Action</th>
-				  </tr>
-				</thead>
-				<tbody>
-				
+<!--  Main wrapper -->
+<div class="body-wrapper">
 
-				@foreach($contact as $d)
-				  <tr>
-					<td>{{$d->id}}</td>
-					<td>{{$d->name}}</td>
-					<td>{{$d->email}}</td>
-					<td>{{$d->comment}}</td>
-					<td>{{$d->created_at}}</td>
-					<td>{{$d->updated_at}}</td>
 
-					<td  class="text-center">
-						<a href="#" class="btn btn-primary">Edit</a>
-						<a href="#" class="btn btn-danger">Delete</a>
-					</td>
-				  </tr>
-				@endforeach 
-				 
-				</tbody>
-			  </table>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
- 
+	<div class="body-wrapper-inner">
+		<div class="container-fluid">
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title fw-semibold mb-4">Contacts</h5>
+					<p class="mb-0">Manage Contacts </p>
+					@if(session('delete'))
+					<h3 style="color:green" class="float-end m-3">{{session('delete')}} is Deleted success</h3>
+					@endif
 
- @endsection
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>#ID</th>
+								<th>Name</th>
+								<th>Email</th>
+								<th>Comment</th>
+								<th>Created_at</th>
+								<th>Updated_at</th>
+								<th class="text-center">Action</th>
+							</tr>
+						</thead>
+						<tbody>
+
+
+							@foreach($contact as $d)
+							<tr>
+								<td>{{$d->id}}</td>
+								<td>{{$d->name}}</td>
+								<td>{{$d->email}}</td>
+								<td>{{$d->comment}}</td>
+								<td>{{$d->created_at}}</td>
+								<td>{{$d->updated_at}}</td>
+
+								<td class="text-center">
+									<a href="#" class="btn btn-primary">Edit</a>
+									<a href="/manage_contacts/{{$d->id}}" class="btn btn-danger">Delete</a>
+								</td>
+							</tr>
+							@endforeach
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+
+
+@endsection

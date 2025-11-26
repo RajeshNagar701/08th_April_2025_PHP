@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class CustomerController extends Controller
 {
@@ -65,6 +66,15 @@ class CustomerController extends Controller
         if ($data) {
             if (Hash::check($request->pass, $data->pass)) {
                 if ($data->status == "Unblock") {
+
+                    // session create
+                    Session()->put('cname',$data->name);  // $_SESSION['cname']=$data->name
+                    Session()->put('cid',$data->id);
+                    Session()->put('cemail',$data->email);
+
+                    // Session()->get('cname')  get session
+                    // session()->pull('cname');
+
                     echo "<script>
                     alert('Login success');
                     window.location='/';
@@ -87,6 +97,16 @@ class CustomerController extends Controller
                     window.location='/login';
                     </script>";
         }
+    }
+
+    public function cust_logout()
+    {
+       
+        Session()->pull('cid');
+        Session()->pull('cname');
+        Session()->pull('cemail');
+
+        return redirect('/');
     }
 
     /**
@@ -130,8 +150,11 @@ class CustomerController extends Controller
      * @param  \App\Models\customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(customer $customer)
+    public function destroy(customer $customer,$id)
     {
-        //
+        $data=customer::find($id);
+        $del_data=$data->name;
+        $data->delete();
+        return back()->with('delete', $del_data);
     }
 }

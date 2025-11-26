@@ -84,11 +84,18 @@ function active($currect_page){
                         </div>
                     </div>
                     <a href="contact" class="nav-item nav-link">Contact</a>
+                    @if(session()->has('cid'))
+                    <a href="profile" class="nav-item nav-link">Hi.. {{Session()->get('cname')}}</a>
+                    @endif
                 </div>
                 <div class="d-flex">
                     <a class="btn btn-primary btn-sm-square me-3" href=""><i class="fab fa-facebook-f"></i></a>
                     <a class="btn btn-primary btn-sm-square me-3" href=""><i class="fab fa-instagram"></i></a>
+                    @if(session()->has('cid'))
+                    <a class="btn btn-primary btn-sm-square" href="/cust_logout">Logout</i></a>
+                    @else
                     <a class="btn btn-primary btn-sm-square" href="/login">Login</i></a>
+                    @endif
                 </div>
             </div>
         </nav>

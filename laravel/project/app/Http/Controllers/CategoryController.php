@@ -35,7 +35,16 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $data = new category();
+        $data->cate_name = $request->cate_name;
+
+        $cate_img = $request->file('cate_img');  // image get
+        $filename = time() . '_img.' . $request->file('cate_img')->getClientOriginalExtension(); // name set
+        $cate_img->move('upload/categoriesy', $filename); // move in public folder
+        $data->cate_img = $filename; // store in name in database
+
+         $data->save();
+        return redirect('/add_categories');
     }
 
     /**
@@ -79,8 +88,11 @@ class CategoryController extends Controller
      * @param  \App\Models\category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(category $category)
+    public function destroy(category $category,$id)
     {
-        //
+        $data=category::find($id); // find se get single data
+        $del_data=$data->cate_name;
+        $data->delete();
+        return back()->with('delete', $del_data);
     }
 }
