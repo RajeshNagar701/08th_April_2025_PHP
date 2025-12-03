@@ -28,6 +28,16 @@
         </div>
         <div class="row justify-content-center">
             <div class="col-lg-7">
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
+
                 <div class="wow fadeIn" data-wow-delay="0.3s">
                     <form action="{{url('/add_signup')}}" enctype="multipart/form-data" method="post">
                         @csrf
@@ -51,9 +61,9 @@
                                 </div>
                             </div>
                             <div class="col-md-12">
-                                 <label for="password">Select Gender</label>
+                                <label for="password">Select Gender</label>
                                 <div class="form-check">
-                                    <input type="radio" class="form-check-input" id="radio1" name="gender" value="Male" >Male
+                                    <input type="radio" class="form-check-input" id="radio1" name="gender" value="Male">Male
                                     <label class="form-check-label" for="radio1"></label>
                                 </div>
                                 <div class="form-check">
@@ -62,16 +72,16 @@
                                 </div>
                             </div>
                             <div class="col-md-12">
-                                 <label for="password">Select Hobby</label>
+                                <label for="password">Select Hobby</label>
                                 <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="radio1" name="hobby[]" value="Sports" >Sports
+                                    <input type="checkbox" class="form-check-input" id="radio1" name="hobby[]" value="Sports">Sports
                                     <label class="form-check-label" for="radio1"></label>
                                 </div>
                                 <div class="form-check">
                                     <input type="checkbox" class="form-check-input" id="radio2" name="hobby[]" value="Singing">Singing
                                     <label class="form-check-label" for="radio2"></label>
                                 </div>
-                                 <div class="form-check">
+                                <div class="form-check">
                                     <input type="checkbox" class="form-check-input" id="radio2" name="hobby[]" value="Dancing">Dancing
                                     <label class="form-check-label" for="radio2"></label>
                                 </div>
@@ -82,7 +92,7 @@
                                     <label for="password">Profile Pic</label>
                                 </div>
                             </div>
-                             <div class="col-md-12">
+                            <div class="col-md-12">
                                 <div class="form-floating">
                                     <input type="number" name="mobile" class="form-control" id="email" placeholder="Your Mobile Number">
                                     <label for="password">Mobile Number</label>

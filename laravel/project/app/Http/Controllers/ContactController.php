@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\contact;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ContactController extends Controller
 {
@@ -34,12 +35,21 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
+        // create validation Rule 
+        $validation=$request->validate([
+            'name' => 'required|alpha:ascii |max:255',
+            'email' => 'required|unique:contacts',
+            'comment' => 'required'
+        ]);
         $data=new contact;
         $data->name=$request->name;
         $data->email=$request->email;
         $data->comment=$request->comment;
         $data->save();
-        return back()->with('Success', 'Register Success'); 
+        Alert::success('Congrats', 'You\'ve Inquiry Successfully Registered');
+        return back(); 
+       
+
     }
 
     /**

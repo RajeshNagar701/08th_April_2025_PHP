@@ -35,14 +35,20 @@
                                
                                 <div class="col-md-12">
                                     <div class="form-floating">
-                                        <input type="email" name="email" class="form-control" id="email" placeholder="Your Email">
+                                        <input type="text" value="{{old('email')}}" name="email" class="form-control" id="email" placeholder="Your Email">
                                         <label for="email">Your Email</label>
+                                        @error('email')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                  <div class="col-md-12">
                                     <div class="form-floating">
-                                        <input type="password" name="pass" class="form-control" id="email" placeholder="Your Password">
+                                        <input type="password" value="{{old('pass')}}" name="pass" class="form-control" id="email" placeholder="Your Password">
                                         <label for="password">Your password</label>
+                                         @error('pass')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                

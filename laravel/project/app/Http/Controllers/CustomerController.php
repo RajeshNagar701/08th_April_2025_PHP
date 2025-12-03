@@ -6,6 +6,7 @@ use App\Models\customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CustomerController extends Controller
 {
@@ -37,6 +38,16 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
+        // create validation Rule 
+        $validation = $request->validate([
+            'name' => 'required|alpha:ascii |max:255',
+            'email' => 'required|unique:contacts',
+            'pass' => 'required|min:8|max:12',
+            'gender' => 'required|in:Male,Female',
+            'hobby' => 'integer|boolean|min:0|max:2',
+            'mobile' => 'required|digits:10',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ]);
         $data = new customer();
         $data->name = $request->name;
         $data->email = $request->email;
@@ -51,6 +62,7 @@ class CustomerController extends Controller
         $data->image = $filename; // store in name in database
 
         $data->save();
+        Alert::success('Success', 'You\'ve Signup Successfully');
         return redirect('/signup');
     }
 
@@ -62,46 +74,42 @@ class CustomerController extends Controller
     public function auth_login(Request $request)
     {
 
+        $validation = $request->validate([
+            'email' => 'required|email',
+            'pass' => 'required|min:4|max:12'
+        ]);
         $data = customer::where('email', $request->email)->first();
         if ($data) {
             if (Hash::check($request->pass, $data->pass)) {
                 if ($data->status == "Unblock") {
 
                     // session create
-                    Session()->put('cname',$data->name);  // $_SESSION['cname']=$data->name
-                    Session()->put('cid',$data->id);
-                    Session()->put('cemail',$data->email);
+                    Session()->put('cname', $data->name);  // $_SESSION['cname']=$data->name
+                    Session()->put('cid', $data->id);
+                    Session()->put('cemail', $data->email);
 
                     // Session()->get('cname')  get session
                     // session()->pull('cname');
 
-                    echo "<script>
-                    alert('Login success');
-                    window.location='/';
-                    </script>";
+                    Alert::success('Congrats', 'You\'ve Login Successfully');
+                    return redirect('/index');
                 } else {
-                    echo "<script>
-                    alert('Login Failed due to Blocked Account');
-                    window.location='/login';
-                    </script>";
+                    Alert::error('Failed', 'Login Failed due to Blocked Account');
+                    return redirect('/login');
                 }
             } else {
-                echo "<script>
-                    alert('Login Failed due to wrong password');
-                    window.location='/login';
-                    </script>";
+                Alert::error('Failed', 'Login Failed due to wrong password');
+                return redirect('/login');
             }
         } else {
-            echo "<script>
-                    alert('Login Failed due wrong email');
-                    window.location='/login';
-                    </script>";
+            Alert::error('Failed', 'Login Failed due wrong email');
+            return redirect('/login');
         }
     }
 
     public function cust_logout()
     {
-       
+
         Session()->pull('cid');
         Session()->pull('cname');
         Session()->pull('cemail');
@@ -150,10 +158,10 @@ class CustomerController extends Controller
      * @param  \App\Models\customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(customer $customer,$id)
+    public function destroy(customer $customer, $id)
     {
-        $data=customer::find($id);
-        $del_data=$data->name;
+        $data = customer::find($id);
+        $del_data = $data->name;
         $data->delete();
         return back()->with('delete', $del_data);
     }
