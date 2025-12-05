@@ -69,6 +69,10 @@ Route::get('/login',[CustomerController ::class,'login']);
 Route::post('/auth_login',[CustomerController ::class,'auth_login']);
 Route::get('/cust_logout',[CustomerController ::class,'cust_logout']);
 
+Route::get('/profile',[CustomerController ::class,'profile']);
+Route::get('/edit_profile/{id}',[CustomerController ::class,'edit']);
+Route::post('/update_profile/{id}',[CustomerController ::class,'update']);
+
 Route::get('/signup',[CustomerController ::class,'create']);
 Route::post('/add_signup',[CustomerController ::class,'store']);
 

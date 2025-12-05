@@ -117,6 +117,13 @@ class CustomerController extends Controller
         return redirect('/');
     }
 
+    public function profile(customer $customer)
+    {
+        $data = customer::where('id',Session()->get('cid'))->first();
+        return view('website.profile', ["customer" => $data]);
+    }
+
+   
     /**
      * Display the specified resource.
      *
@@ -135,9 +142,10 @@ class CustomerController extends Controller
      * @param  \App\Models\customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function edit(customer $customer)
+    public function edit(customer $customer,$id)
     {
-        //
+        $data = customer::find($id);
+        return view('website.edit_profile', ["customer" => $data]);
     }
 
     /**
@@ -147,9 +155,35 @@ class CustomerController extends Controller
      * @param  \App\Models\customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, customer $customer)
+    public function update(Request $request, customer $customer,$id)
     {
-        //
+        // create validation Rule 
+        $validation = $request->validate([
+            'name' => 'required|alpha:ascii |max:255',
+            'email' => 'required',
+            'mobile' => 'required|digits:10',
+        ]);
+        
+        $data=customer::find($id);
+
+        $data->name = $request->name;
+        $data->email = $request->email;
+        $data->gender = $request->gender;
+        $data->hobby = implode(",", $request->hobby);
+        $data->mobile = $request->mobile;
+
+        if($request->hasFile('image'))
+        {
+            unlink('upload/customers/'.$data->image);
+
+            $image = $request->file('image');  // image get
+            $filename = time() . '_img.' . $request->file('image')->getClientOriginalExtension(); // name set
+            $image->move('upload/customers', $filename); // move in public folder
+            $data->image = $filename; // store in name in database
+        }
+        $data->update();
+        Alert::success('Success', 'You\'ve Profile Update Successfully');
+        return redirect('/profile');
     }
 
     /**
