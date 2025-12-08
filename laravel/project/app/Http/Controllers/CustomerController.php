@@ -119,11 +119,11 @@ class CustomerController extends Controller
 
     public function profile(customer $customer)
     {
-        $data = customer::where('id',Session()->get('cid'))->first();
+        $data = customer::where('id', Session()->get('cid'))->first();
         return view('website.profile', ["customer" => $data]);
     }
 
-   
+
     /**
      * Display the specified resource.
      *
@@ -142,7 +142,7 @@ class CustomerController extends Controller
      * @param  \App\Models\customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function edit(customer $customer,$id)
+    public function edit(customer $customer, $id)
     {
         $data = customer::find($id);
         return view('website.edit_profile', ["customer" => $data]);
@@ -155,7 +155,7 @@ class CustomerController extends Controller
      * @param  \App\Models\customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, customer $customer,$id)
+    public function update(Request $request, customer $customer, $id)
     {
         // create validation Rule 
         $validation = $request->validate([
@@ -163,8 +163,8 @@ class CustomerController extends Controller
             'email' => 'required',
             'mobile' => 'required|digits:10',
         ]);
-        
-        $data=customer::find($id);
+
+        $data = customer::find($id);
 
         $data->name = $request->name;
         $data->email = $request->email;
@@ -172,9 +172,8 @@ class CustomerController extends Controller
         $data->hobby = implode(",", $request->hobby);
         $data->mobile = $request->mobile;
 
-        if($request->hasFile('image'))
-        {
-            unlink('upload/customers/'.$data->image);
+        if ($request->hasFile('image')) {
+            unlink('upload/customers/' . $data->image);
 
             $image = $request->file('image');  // image get
             $filename = time() . '_img.' . $request->file('image')->getClientOriginalExtension(); // name set
@@ -198,5 +197,27 @@ class CustomerController extends Controller
         $del_data = $data->name;
         $data->delete();
         return back()->with('delete', $del_data);
+    }
+
+    public function status_customers(customer $customer, $id)
+    {
+        $data = customer::find($id);
+        $status = $data->status;
+        if ($status == "Block") {
+            $data->status = "Unblock";
+            $data->update();
+            Alert::success('Success', 'You\'ve Status Unblock Successfully');
+            return back();
+        } else {
+            
+            Session()->pull('cid');
+            Session()->pull('cname');
+            Session()->pull('cemail');
+
+            $data->status = "Block";
+            $data->update();
+            Alert::success('Success', 'You\'ve Status Block Successfully');
+            return back();
+        }
     }
 }

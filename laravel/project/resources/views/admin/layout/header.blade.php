@@ -23,6 +23,8 @@ function active($currect_page)
 </head>
 
 <body>
+
+  @include('sweetalert::alert')
   <!--  Body Wrapper -->
   <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
     data-sidebar-position="fixed" data-header-position="fixed">
@@ -39,7 +41,7 @@ function active($currect_page)
 
       <div class="d-lg-flex align-items-center gap-2">
         <h3 class="text-white mb-2 mr-2 mb-lg-0 fs-5 text-center">
-          Hi... {{session()->get('aname') }} 
+          Hi... {{session()->get('aname') }}
         </h3>
         <div class="d-flex align-items-center justify-content-center gap-2">
 

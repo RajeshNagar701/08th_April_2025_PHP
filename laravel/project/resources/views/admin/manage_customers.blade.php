@@ -26,9 +26,7 @@
 								<th>hobby</th>
 								<th>Image</th>
 								<th>Mobile</th>
-								<th>Status</th>
-								<th>Created_at</th>
-								<th>Updated_at</th>
+							
 								<th class="text-center">Action</th>
 							</tr>
 						</thead>
@@ -42,15 +40,15 @@
 								<td>{{$d->email}}</td>
 								<td>{{$d->gender}}</td>
 								<td>{{$d->hobby}}</td>
-								<td>{{$d->image}}</td>
+								<td><img src="<?php echo url('upload/customers/'.$d->image)?>" width="50px"> </td>
 								<td>{{$d->mobile}}</td>
-								<td>{{$d->status}}</td>
-								<td>{{$d->created_at}}</td>
-								<td>{{$d->updated_at}}</td>
-
+								
 								<td class="text-center">
 									<a href="#" class="btn btn-primary">Edit</a>
 									<a href="/manage_customers/{{$d->id}}" class="btn btn-danger">Delete</a>
+									<a href="/status_customers/{{$d->id}}" class="btn btn-warning">
+										{{$d->status}}
+									</a>
 								</td>
 							</tr>
 							@endforeach

@@ -42,6 +42,12 @@ class Kernel extends HttpKernel
             // \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        ],// Add Group Route 
+        'Afterlogin_a'=>[
+            \App\Http\Middleware\Afterlogin_a::class
+        ],
+        'Beforelogin_a'=>[
+            \App\Http\Middleware\Beforelogin_a::class
         ],
     ];
 
@@ -53,6 +59,9 @@ class Kernel extends HttpKernel
      * @var array<string, class-string|string>
      */
     protected $routeMiddleware = [
+        // Registere Route Middleware 
+        'Afterlogin_u' => \App\Http\Middleware\Afterlogin_u::class,
+        'Beforelogin_u' => \App\Http\Middleware\Beforelogin_u::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'auth.session' => \Illuminate\Session\Middleware\AuthenticateSession::class,
