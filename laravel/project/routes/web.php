@@ -38,6 +38,8 @@ Route::get('/about', function () {
 });
 
 Route::get('/service', [ServiceController::class, 'index']);
+Route::get('/view_service/{id}', [ServiceController::class, 'view_service']);
+Route::get('/details_service/{id}', [ServiceController::class, 'details_service']);
 
 
 Route::get('/price', function () {
@@ -98,6 +100,7 @@ Route::group(['middleware' => ['Afterlogin_a']], function () {
     });
     Route::get('/admin_logout', [AdminController::class, 'admin_logout']);
     Route::get('/add_services', [ServiceController::class, 'create']);
+    Route::post('/services', [ServiceController::class, 'store']);
     Route::get('/manage_services', [ServiceController::class, 'show']);
     Route::get('/manage_services/{id}', [ServiceController::class, 'destroy']);
     Route::get('/add_categories', [CategoryController::class, 'create']);

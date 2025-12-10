@@ -11,7 +11,7 @@
             <ol class="breadcrumb justify-content-center animated slideInLeft mb-0">
                 <li class="breadcrumb-item"><a class="text-primary" href="#">Home</a></li>
                 <li class="breadcrumb-item"><a class="text-primary" href="#">Pages</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Service</li>
+                <li class="breadcrumb-item active" aria-current="page">View Service</li>
             </ol>
         </nav>
     </div>
@@ -23,26 +23,26 @@
 <div class="container-fluid service py-5">
     <div class="container">
         <div class="text-center wow fadeIn" data-wow-delay="0.1s">
-            <h1 class="font-dancing-script text-primary">Our Services</h1>
-            <h1 class="mb-5">Explore Our Services</h1>
+            <h1 class="font-dancing-script text-primary">Our All Services</h1>
+            <h1 class="mb-5">Explore Our all Services</h1>
         </div>
 
         <div class="row g-4 g-md-0 text-center">
-            @foreach($category as $data)
+            @foreach($service as $data)
             <div class="col-md-6 col-lg-4">
                 <div class="service-item h-100 p-4 border-bottom border-end wow fadeIn" data-wow-delay="0.1s">
-                    <img class="img-fluid" src="<?php echo url('upload/categoriesy/' . $data->cate_img) ?>" width="50px">
+                    <img  src="<?php echo url('upload/services/' . $data->ser_img) ?>" style="width:100%;height:250px">
                     <h3 class="mb-3">
-                        {{$data->cate_name}}
+                        {{$data->ser_name}}
                     </h3>
 
-                    <a class="btn btn-sm btn-primary text-uppercase" href="/view_service/{{$data->id}}">Read More <i
+                    <a class="btn btn-sm btn-primary text-uppercase" href="/details_service/{{$data->id}}">View Services <i
                             class="bi bi-arrow-right"></i></a>
                 </div>
             </div>
-
             @endforeach
-
+            <a class="btn btn-sm btn-primary text-uppercase" href="/service">back <i
+                            class="bi bi-arrow-right"></i></a>
 
         </div>
     </div>

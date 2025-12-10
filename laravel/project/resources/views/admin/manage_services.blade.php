@@ -33,17 +33,16 @@
 							</tr>
 						</thead>
 						<tbody>
-
-
 							@foreach($service as $d)
 							<tr>
 								<td>{{$d->id}}</td>
-								<td>{{$d->cate_id}}</td>
+								<td>{{$d->cate_name}}</td>
 								<td>{{$d->ser_name}}</td>
 								<td>{{$d->ser_description}}</td>
 								<td>{{$d->main_price}}</td>
 								<td>{{$d->dis_price}}</td>
-								<td>{{$d->ser_img}}</td>
+								<td><img src="<?php echo url('upload/services/'.$d->ser_img)?>" width="50px"> </td>
+
 								<td>{{$d->status}}</td>
 								<td>{{$d->created_at}}</td>
 								<td>{{$d->updated_at}}</td>

@@ -31,7 +31,8 @@
 							<tr>
 								<td>{{$d->id}}</td>
 								<td>{{$d->cate_name}}</td>
-								<td>{{$d->cate_img}}</td>
+								<td><img src="<?php echo url('upload/categoriesy/'.$d->cate_img)?>" width="50px"> </td>
+
 								<td class="text-center">
 									<a href="#" class="btn btn-primary">Edit</a>
 									<a href="/manage_categories/{{$d->id}}" class="btn btn-danger">Delete</a>

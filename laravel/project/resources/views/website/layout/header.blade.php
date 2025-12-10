@@ -70,23 +70,23 @@ function active($currect_page){
             </button>
             <div class="collapse navbar-collapse p-3" id="navbarCollapse">
                 <div class="navbar-nav mx-auto">
-                    <a href="index" class="nav-item nav-link <?php active('index')?>">Home</a>
-                    <a href="about" class="nav-item nav-link <?php active('about')?>">About</a>
-                    <a href="service" class="nav-item nav-link <?php active('service')?>">Service</a>
-                    <a href="price" class="nav-item nav-link <?php active('price')?>">Price</a>
+                    <a href="/index" class="nav-item nav-link <?php active('index')?>">Home</a>
+                    <a href="/about" class="nav-item nav-link <?php active('about')?>">About</a>
+                    <a href="/service" class="nav-item nav-link <?php active('service')?>">Service</a>
+                    <a href="/price" class="nav-item nav-link <?php active('price')?>">Price</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                         <div class="dropdown-menu bg-light mt-2">
-                            <a href="gallery" class="dropdown-item <?php active('gallery')?>">Photo Gallery</a>
-                            <a href="blog" class="dropdown-item <?php active('blog')?>">Beauty Blog</a>
-                            <a href="team" class="dropdown-item <?php active('team')?>">Our Team</a>
-                            <a href="testimonial" class="dropdown-item <?php active('testimonial')?>">Testimonial</a>
-                            <a href="404" class="dropdown-item <?php active('404')?>">404 Page</a>
+                            <a href="/gallery" class="dropdown-item <?php active('gallery')?>">Photo Gallery</a>
+                            <a href="/blog" class="dropdown-item <?php active('blog')?>">Beauty Blog</a>
+                            <a href="/team" class="dropdown-item <?php active('team')?>">Our Team</a>
+                            <a href="/testimonial" class="dropdown-item <?php active('testimonial')?>">Testimonial</a>
+                            <a href="/404" class="dropdown-item <?php active('404')?>">404 Page</a>
                         </div>
                     </div>
                     <a href="contact" class="nav-item nav-link">Contact</a>
                     @if(session()->has('cid'))
-                    <a href="profile" class="nav-item nav-link">Hi.. {{Session()->get('cname')}}</a>
+                    <a href="/profile" class="nav-item nav-link">Hi.. {{Session()->get('cname')}}</a>
                     @endif
                 </div>
                 <div class="d-flex">
