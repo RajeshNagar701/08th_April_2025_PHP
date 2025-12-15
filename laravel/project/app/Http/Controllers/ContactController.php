@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\contactmail;
 use App\Models\contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class ContactController extends Controller
@@ -42,10 +44,15 @@ class ContactController extends Controller
             'comment' => 'required'
         ]);
         $data=new contact;
-        $data->name=$request->name;
-        $data->email=$request->email;
+  $name=$data->name=$request->name;
+  $email=$data->email=$request->email;
         $data->comment=$request->comment;
         $data->save();
+
+        $data=array("name"=>$name,"email"=>$email);
+        Mail::to($email)->send(new contactmail($data));
+
+
         Alert::success('Congrats', 'You\'ve Inquiry Successfully Registered');
         return back(); 
        

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\forgotmail;
 use App\Models\customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -40,13 +42,13 @@ class CustomerController extends Controller
     {
         // create validation Rule 
         $validation = $request->validate([
-            'name' => 'required|alpha:ascii |max:255',
-            'email' => 'required|unique:contacts',
-            'pass' => 'required|min:8|max:12',
-            'gender' => 'required|in:Male,Female',
-            'hobby' => 'integer|boolean|min:0|max:2',
-            'mobile' => 'required|digits:10',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            'name' => 'required|regex:/^[a-zA-Z ]+$/',
+            'email' => 'required|unique:customers',
+            'pass' => 'required|min:3|max:12',
+            //'gender' => 'required|in:Male,Female',
+            //'hobby' => 'integer|boolean|min:0|max:2',
+            //'mobile' => 'required|digits:10',
+            //'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
         $data = new customer();
         $data->name = $request->name;
@@ -113,7 +115,7 @@ class CustomerController extends Controller
         Session()->pull('cid');
         Session()->pull('cname');
         Session()->pull('cemail');
-
+        Alert::success('Congrats', 'You\'ve Logout Successfully');
         return redirect('/');
     }
 
@@ -121,6 +123,96 @@ class CustomerController extends Controller
     {
         $data = customer::where('id', Session()->get('cid'))->first();
         return view('website.profile', ["customer" => $data]);
+    }
+
+    public function forgot(customer $customer)
+    {
+        return view('website.forgot');
+    }
+
+    public function auth_forgot(Request $request)
+    {
+        $validation = $request->validate([
+            'email' => 'required|email'
+        ]);
+        $data = customer::where('email', $request->email)->first();
+        if ($data) {
+             $email=$data->email;
+             $otp=rand('100000','999999');
+             
+             Session()->put('otp', $otp);  
+             Session()->put('forgot_id', $data->id);
+
+             $data=array("name"=>$data->name,"otp"=>Session()->get('otp'));
+             Mail::to($email)->send(new forgotmail($data));
+             Alert::success('Congrats', 'Your OTP sent Successfully');
+             return redirect('/enter_otp');
+        }
+        else {
+            Alert::error('Failed', 'Email Does not Exist !');
+            return redirect('/forgot');
+        }
+    }
+    
+
+    public function enter_otp(customer $customer)
+    {
+        if(Session()->get('otp'))
+        {
+            return view('website.enter_otp');
+        }
+        else
+        {
+            return redirect('/');
+        }
+        
+    }
+
+    public function auth_enter_otp(Request $request)
+    {
+        $validation = $request->validate([
+            'otp' => 'required'
+        ]);
+        if ($request->otp==Session()->get('otp')) {
+             Alert::success('Congrats', 'Your OTP Match Successfully');
+             Session()->pull('otp');
+
+             Session()->put('reset', 'reset');   // reset passs session
+             return redirect('/reset_password');
+        }
+        else {
+            Alert::error('Failed', 'OTP Not Match !');
+            return redirect('/enter_otp');
+        }
+    }
+
+    public function reset_password(customer $customer)
+    {
+        if(Session()->get('reset'))
+        {
+            return view('website.reset_password');
+        }
+        else
+        {
+            return redirect('/');
+        }
+        
+    }
+
+    public function auth_reset_password(Request $request)
+    {
+        $validation = $request->validate([
+            'pass' => 'required'
+        ]); 
+
+        $data=customer::where('id',Session()->get('forgot_id'))->first();
+        $data->pass=Hash::make($request->pass);
+        $data->update();
+        Alert::success('Congrats', 'Your Password Reset Successfully');
+
+        Session()->pull('forgot_id');
+        Session()->pull('reset');
+        return redirect('/login');
     }
 
 

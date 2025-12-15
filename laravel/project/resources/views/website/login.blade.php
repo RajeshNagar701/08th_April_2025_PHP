@@ -57,7 +57,8 @@
                                     <button name="submit" class="btn btn-primary w-100 py-3 ms-0" type="submit">SEND MESSAGE</button>
                                 </div>
                                 <div class="col-12 mt-5">
-                                   <a href="/signup">If you not registered then Signup Here</a>
+                                   <a href="/signup" class="float-start">If you not registered then Signup Here</a>
+                                   <a href="/forgot" class="float-end">Forgot Password</a>
                                 </div>
                             </div>
                         </form>

@@ -77,6 +77,18 @@ Route::get('/edit_profile/{id}', [CustomerController::class, 'edit'])->middlewar
 Route::post('/update_profile/{id}', [CustomerController::class, 'update'])->middleware('Afterlogin_u');
 
 
+// Email Setup
+Route::get('/forgot', [CustomerController::class, 'forgot'])->middleware('Beforelogin_u');
+Route::post('/auth_forgot', [CustomerController::class, 'auth_forgot'])->middleware('Beforelogin_u');
+
+Route::get('/enter_otp', [CustomerController::class, 'enter_otp'])->middleware('Beforelogin_u');
+Route::post('/auth_enter_otp', [CustomerController::class, 'auth_enter_otp'])->middleware('Beforelogin_u');
+
+Route::get('/reset_password', [CustomerController::class, 'reset_password'])->middleware('Beforelogin_u');
+Route::post('/auth_reset_password', [CustomerController::class, 'auth_reset_password'])->middleware('Beforelogin_u');
+
+
+
 Route::get('/404', function () {
     return view('website.404');
 });
