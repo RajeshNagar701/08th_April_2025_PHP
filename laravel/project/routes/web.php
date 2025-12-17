@@ -76,7 +76,6 @@ Route::get('/profile', [CustomerController::class, 'profile'])->middleware('Afte
 Route::get('/edit_profile/{id}', [CustomerController::class, 'edit'])->middleware('Afterlogin_u');
 Route::post('/update_profile/{id}', [CustomerController::class, 'update'])->middleware('Afterlogin_u');
 
-
 // Email Setup
 Route::get('/forgot', [CustomerController::class, 'forgot'])->middleware('Beforelogin_u');
 Route::post('/auth_forgot', [CustomerController::class, 'auth_forgot'])->middleware('Beforelogin_u');

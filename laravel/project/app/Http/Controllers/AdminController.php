@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\admin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
@@ -13,9 +14,16 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('admin.admin-login');
+        if($request->cookie('c_email'))
+        {
+            $c_email=$request->cookie('c_email');
+            $c_pass=$request->cookie('c_pass');
+            $cookie=array("c_email"=>$c_email,"c_pass"=>$c_pass);
+        }
+        $cookie[]="";
+        return view('admin.admin-login',["cookie"=> $cookie]);
     }
 
     public function admin_auth_login(Request $request)
@@ -28,7 +36,11 @@ class AdminController extends Controller
                 // session create
                 Session()->put('aname', $data->name);  // $_SESSION['cname']=$data->name
                 Session()->put('aid', $data->id);
-
+               if(isset($request->rem))
+               {
+                Cookie::queue('c_email',  $request->email, 10);
+                Cookie::queue('c_pass',  $request->pass, 10);
+               }
                 echo "<script>
                     alert('Login success');
                     window.location='/dashboard';
